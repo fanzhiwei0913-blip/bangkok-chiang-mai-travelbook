@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f0e5">
+  <title>曼谷·清迈慢旅行手册｜2026</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper:#f6f0e5;--paper-2:#fffaf0;--ink:#18312e;--muted:#6e7a72;
+      --line:#d9cfbd;--card:rgba(255,252,245,.88);--card-solid:#fffdf8;
+      --green:#1d6a5d;--green-2:#dcece5;--coral:#e6785b;--coral-2:#f9dfd4;
+      --gold:#c7933d;--gold-2:#f5e8c7;--blue:#4f7f9a;--shadow:0 16px 45px rgba(55,46,31,.10);
+      --sky:#dceef0;--sky2:#f8dfbd;--mount:#739388;--plant:#2c7160;--building:#fff1d8;
+      --radius:22px;--radius-sm:14px;
+    }
+    html[data-theme="dark"] {
+      color-scheme:dark;
+      --paper:#101b1c;--paper-2:#162526;--ink:#edf4eb;--muted:#aab8b0;
+      --line:#314443;--card:rgba(24,39,39,.9);--card-solid:#1a2b2b;
+      --green:#79c7ad;--green-2:#1d4139;--coral:#f09b7f;--coral-2:#4a2c27;
+      --gold:#e5bb68;--gold-2:#463c26;--blue:#8bb6cb;--shadow:0 18px 50px rgba(0,0,0,.30);
+      --sky:#142c3f;--sky2:#263c4d;--mount:#385c59;--plant:#477c68;--building:#ddcda9;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:
+      radial-gradient(circle at 15% 0%,color-mix(in srgb,var(--gold-2) 45%,transparent),transparent 26rem),
+      linear-gradient(180deg,var(--paper),var(--paper-2));color:var(--ink);
+      font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;line-height:1.65}
+    button,a{font:inherit} button{color:inherit}
+    a{color:var(--green)}
+    .app{width:min(960px,100%);margin:auto;padding:14px 18px 60px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 14px;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.05em}
+    .brand-mark{width:35px;height:35px;border-radius:12px;background:var(--green);color:var(--paper-2);display:grid;place-items:center;transform:rotate(-3deg)}
+    .icon-btn,.pill-btn,.map-day-btn,.check-btn,.ghost-btn{border:1px solid var(--line);background:var(--card);border-radius:999px;cursor:pointer;transition:.2s ease;box-shadow:0 4px 14px rgba(0,0,0,.03)}
+    .icon-btn{padding:8px 13px;display:flex;align-items:center;gap:7px}
+    button:hover{transform:translateY(-1px);border-color:var(--green)} button:focus-visible,a:focus-visible{outline:3px solid color-mix(in srgb,var(--gold) 52%,transparent);outline-offset:2px}
+    .hero{overflow:hidden;border:1px solid var(--line);border-radius:30px;background:var(--card);box-shadow:var(--shadow)}
+    .hero-copy{padding:28px 28px 13px;position:relative;z-index:2}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--coral);text-transform:uppercase}
+    h1{font-size:clamp(32px,7vw,62px);line-height:1.06;margin:8px 0 10px;letter-spacing:-.045em}
+    .hero-sub{margin:0;color:var(--muted);font-size:15px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .hero-tag{padding:6px 10px;border:1px solid var(--line);background:color-mix(in srgb,var(--paper-2) 78%,transparent);border-radius:999px;font-size:12px;font-weight:700}
+    .hero-art{display:block;width:100%;height:auto;min-height:245px}
+    .sketch{stroke:var(--ink);stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+    .sky{fill:var(--sky)} .sky-glow{fill:var(--sky2)} .mount{fill:var(--mount)} .plant{fill:var(--plant)} .building{fill:var(--building)} .water{fill:var(--blue);opacity:.68}
+    .sun{fill:var(--gold)} .moon-star{opacity:0} html[data-theme="dark"] .sun{opacity:0} html[data-theme="dark"] .moon-star{opacity:1;fill:var(--gold)}
+    .dashboard{display:grid;grid-template-columns:1.35fr .65fr;gap:14px;margin:16px 0}
+    .panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:20px}
+    .panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .panel-title h2,.panel-title h3{margin:0;font-size:18px;letter-spacing:-.02em}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    .count-box{border-radius:16px;background:var(--green-2);padding:13px 6px;text-align:center}
+    .count-num{display:block;font-size:clamp(22px,6vw,34px);font-weight:850;line-height:1.15;font-variant-numeric:tabular-nums}
+    .count-label{font-size:11px;color:var(--muted);font-weight:700}
+    .clocks{display:grid;gap:9px}
+    .clock{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px}
+    .clock-city{font-size:12px;color:var(--muted)} .clock-time{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
+    .section{margin-top:28px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:12px}
+    .section-head h2{margin:0;font-size:25px;letter-spacing:-.03em}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+    .map-panel{padding:14px;overflow:hidden}
+    .map-controls{display:flex;gap:7px;overflow:auto;padding:4px 2px 12px;scrollbar-width:none}
+    .map-controls::-webkit-scrollbar{display:none}
+    .map-day-btn,.pill-btn{white-space:nowrap;padding:7px 12px;font-size:12px;font-weight:750}
+    .map-day-btn.active,.pill-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+    #tripMap{width:100%;height:auto;min-height:330px;background:linear-gradient(180deg,color-mix(in srgb,var(--sky) 44%,transparent),color-mix(in srgb,var(--green-2) 35%,transparent));border-radius:18px;border:1px solid var(--line)}
+    .map-label{font-size:12px;font-weight:800;fill:var(--ink);paint-order:stroke;stroke:var(--card-solid);stroke-width:4px;stroke-linejoin:round}
+    .map-city{font-size:20px;font-weight:900;fill:var(--ink);opacity:.2;letter-spacing:.12em}
+    .map-route{fill:none;stroke:var(--coral);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:8 7}
+    .map-dot{fill:var(--card-solid);stroke:var(--green);stroke-width:4;cursor:pointer}.map-dot:hover{r:9}
+    .map-dot.major{fill:var(--gold-2);stroke:var(--gold)}
+    .map-hint{font-size:12px;color:var(--muted);padding:8px 5px 0}
+    .days{display:grid;gap:12px}
+    .day{border:1px solid var(--line);background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .day-header{width:100%;border:0;background:transparent;padding:17px 19px;display:flex;align-items:center;gap:13px;text-align:left;cursor:pointer}
+    .day-no{flex:0 0 45px;height:45px;border-radius:15px;background:var(--green);color:white;display:grid;place-items:center;font-weight:900;transform:rotate(-2deg)}
+    .day-title{flex:1;min-width:0}.day-title strong{display:block;font-size:17px}.day-title span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .day-progress{text-align:right;font-size:12px;color:var(--muted)}.day-progress strong{display:block;font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums}
+    .chev{font-size:20px;transition:transform .2s}.day.open .chev{transform:rotate(180deg)}
+    .day-body{display:none;border-top:1px solid var(--line);padding:18px}.day.open .day-body{display:block}
+    .day-tools{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
+    .route-summary{font-size:12px;color:var(--muted)}
+    .ghost-btn{padding:7px 11px;font-size:12px;font-weight:750}
+    .timeline{position:relative;margin-left:7px}
+    .timeline:before{content:"";position:absolute;left:14px;top:12px;bottom:12px;width:2px;background:var(--line)}
+    .event-wrap{position:relative}
+    .travel-pill{display:inline-flex;align-items:center;gap:6px;margin:4px 0 4px 37px;padding:4px 9px;border-radius:999px;background:var(--gold-2);color:var(--ink);font-size:11px;font-weight:750}
+    .event{position:relative;display:grid;grid-template-columns:30px 1fr;gap:13px;padding:8px 0}
+    .event-dot{width:14px;height:14px;border-radius:50%;background:var(--card-solid);border:3px solid var(--green);margin:9px 0 0 8px;z-index:1}
+    .event-card{border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--card-solid) 83%,transparent);padding:13px 14px;transition:.2s}
+    .event.done .event-card{opacity:.48;filter:saturate(.5)}.event.done .event-dot{background:var(--green)}
+    .event-top{display:flex;align-items:flex-start;gap:10px}.event-main{flex:1;min-width:0}
+    .event-time{font-size:12px;color:var(--coral);font-weight:850;font-variant-numeric:tabular-nums}.tz{margin-left:5px;padding:2px 5px;border-radius:6px;background:var(--coral-2);font-size:10px}
+    .event-title{margin:3px 0 4px;font-size:16px;line-height:1.35;font-weight:850}
+    .place-link{border:0;background:none;padding:0;text-align:left;color:inherit;cursor:pointer;border-bottom:1px dashed var(--green)}
+    .event-note{margin:0;color:var(--muted);font-size:13px;white-space:pre-line}
+    .event-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
+    .tag{display:inline-flex;padding:3px 7px;border-radius:7px;font-size:10px;font-weight:800;background:var(--green-2);color:var(--green)}
+    .tag.warn{background:var(--coral-2);color:var(--coral)}.tag.flight{background:var(--gold-2);color:var(--gold)}
+    .check-btn{padding:5px 9px;font-size:11px;font-weight:800;margin-left:auto}.check-btn.checked{background:var(--green);color:#fff;border-color:var(--green)}
+    .mini-map{margin-top:15px;padding:11px;border:1px dashed var(--line);border-radius:14px;background:var(--paper-2)}
+    .mini-map svg{display:block;width:100%;height:66px}.mini-map text{fill:var(--muted);font-size:8px;font-weight:700}
+    .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .info-card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+    .info-card h3{margin:0 0 9px;font-size:16px}.info-card p{margin:5px 0;color:var(--muted);font-size:13px}.info-card strong{color:var(--ink)}
+    .ticket-code{display:inline-block;padding:4px 8px;border-radius:8px;background:var(--gold-2);font-weight:900;letter-spacing:.08em;color:var(--ink)}
+    .todo-list{display:grid;gap:8px}
+    .todo{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:11px 12px;border-radius:13px;background:var(--card-solid);cursor:pointer}
+    .todo input{width:18px;height:18px;accent-color:var(--green);margin-top:3px}.todo.done span{text-decoration:line-through;color:var(--muted)}
+    .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .tip{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:15px}.tip-icon{font-size:23px}.tip h3{margin:5px 0 3px;font-size:14px}.tip p{font-size:12px;color:var(--muted);margin:0}
+    footer{text-align:center;color:var(--muted);font-size:12px;padding:34px 10px 0}
+    .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(4,15,15,.62);backdrop-filter:blur(8px)}
+    .modal.open{display:flex}.modal-card{width:min(520px,100%);max-height:88vh;overflow:auto;background:var(--card-solid);border:1px solid var(--line);border-radius:24px;box-shadow:0 28px 90px rgba(0,0,0,.35);padding:21px}
+    .modal-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.modal-location{display:block;font-size:12px;font-weight:800;color:var(--green);margin-bottom:6px}.modal h2{margin:0;font-size:23px;line-height:1.3}.modal-close{border:0;background:var(--green-2);width:34px;height:34px;border-radius:50%;cursor:pointer}
+    .modal-block{margin-top:15px;padding:13px;border-radius:14px;background:var(--paper);border:1px solid var(--line)}.modal-block strong{display:block;font-size:12px;color:var(--coral);margin-bottom:3px}.modal-block p{margin:0;font-size:14px}
+    .nav-link{display:flex;justify-content:center;margin-top:15px;padding:11px 14px;border-radius:13px;background:var(--green);color:#fff;text-decoration:none;font-weight:850}
+    .toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper-2);padding:9px 14px;border-radius:999px;font-size:12px;font-weight:750;transition:.25s;z-index:80}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:700px){
+      .app{padding:10px 12px 45px}.dashboard{grid-template-columns:1fr}.hero-copy{padding:23px 19px 8px}.hero-art{min-height:220px}
+      .panel{padding:16px}.section-head{align-items:flex-start}.section-head h2{font-size:22px}.info-grid,.tips{grid-template-columns:1fr}
+      #tripMap{min-height:280px}.day-header{padding:14px 13px}.day-body{padding:14px 10px}.day-no{flex-basis:41px;height:41px}.event{gap:9px}.event-card{padding:12px}.event-top{display:block}.check-btn{margin:10px 0 0}.timeline:before{left:14px}
+      .map-label{font-size:10px}.map-city{font-size:16px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    @media print{.topbar,.map-controls,.check-btn,.day-tools,.modal,.toast{display:none!important}.app{width:100%;padding:0}.day-body{display:block!important}.day{break-inside:avoid;box-shadow:none}.hero,.panel,.info-card,.tip{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark">旅</span><span>慢慢走，也认真吃</span></div>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="切换深浅色"><span id="themeIcon">☀</span><span id="themeText">浅色</span></button>
+    </div>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Thailand · 9 Days</div>
+        <h1>曼谷 · 清迈<br>慢旅行手册</h1>
+        <p class="hero-sub">2026.09.30—10.08｜曼谷 × 清迈｜9天8晚</p>
+        <div class="hero-tags"><span class="hero-tag">不赶路</span><span class="hero-tag">好好吃饭</span><span class="hero-tag">河畔与古城</span><span class="hero-tag">全部时刻为当地时间</span></div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 900 330" role="img" aria-label="曼谷寺庙、清迈山景与湄南河手绘插画">
+        <defs><linearGradient id="riverG" x1="0" x2="1"><stop stop-color="var(--blue)" stop-opacity=".35"/><stop offset="1" stop-color="var(--blue)" stop-opacity=".78"/></linearGradient></defs>
+        <rect class="sky" width="900" height="330"/>
+        <circle class="sun" cx="744" cy="70" r="31"/>
+        <g class="moon-star"><path d="M758 40a30 30 0 1 0 18 50 25 25 0 1 1-18-50"/><circle cx="645" cy="51" r="3"/><circle cx="812" cy="115" r="2"/><circle cx="560" cy="86" r="2.5"/></g>
+        <path class="sky-glow" d="M0 205Q140 165 280 204T560 192T900 205V330H0Z" opacity=".68"/>
+        <path class="mount sketch" d="M0 217L98 119l45 48 45-29 112 82v110H0Z"/>
+        <path class="mount sketch" d="M98 119l12 53 33-5" fill="none" opacity=".65"/>
+        <g class="building sketch">
+          <path d="M338 226v-65h16l12-19 12 19h16v65Z"/>
+          <path d="M330 161h72l-36-35Z"/><path d="M366 126V94l-9 19h18Z"/>
+          <path d="M426 232v-92h20l16-26 16 26h20v92Z"/><path d="M416 140h92l-46-43Z"/><path d="M462 97V57l-11 23h22Z"/>
+          <path d="M522 230v-68h18l13-21 13 21h18v68Z"/><path d="M514 162h78l-39-36Z"/><path d="M553 126V91l-9 20h18Z"/>
+          <path d="M650 230v-97h19l12-36 12 36h19v97Z"/><path d="M642 133h78l-39-30Z"/><path d="M681 97V57l-10 21h20Z"/>
+          <path d="M620 230h123v20H620Z"/>
+        </g>
+        <g class="plant sketch"><path d="M70 244v-63"/><path d="M70 199c-29-8-30-27-28-38 25 3 35 17 28 38Z"/><path d="M70 214c29-8 30-27 28-38-25 3-35 17-28 38Z"/><circle cx="813" cy="216" r="28"/><path d="M813 244v-56"/><circle cx="850" cy="226" r="20"/></g>
+        <path d="M0 252Q145 232 310 257T620 248T900 254V330H0Z" fill="url(#riverG)"/>
+        <g class="sketch" fill="var(--coral-2)"><path d="M710 272h103l-15 19h-71Z"/><path d="M753 272v-34l35 22h-35"/></g>
+        <g class="sketch" fill="none" opacity=".5"><path d="M40 285q35-12 70 0t70 0m100 18q42-13 84 0t84 0m380-10q35-12 70 0"/></g>
+        <g class="sketch" fill="var(--card-solid)"><path d="M160 62l48 13-48 13 11-13Z"/><path d="M160 75l-28 18 10-21-10-15Z"/></g>
+        <path class="sketch" d="M160 88q63 34 116 2" fill="none" stroke-dasharray="5 8" opacity=".55"/>
+      </svg>
+    </header>
+
+    <section class="dashboard" aria-label="出发信息">
+      <div class="panel">
+        <div class="panel-title"><h2>距离出发</h2><span class="eyebrow">NX996</span></div>
+        <div class="countdown" id="countdown"><div class="count-box"><span class="count-num" data-u="d">--</span><span class="count-label">天</span></div><div class="count-box"><span class="count-num" data-u="h">--</span><span class="count-label">时</span></div><div class="count-box"><span class="count-num" data-u="m">--</span><span class="count-label">分</span></div><div class="count-box"><span class="count-num" data-u="s">--</span><span class="count-label">秒</span></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title"><h2>双城时钟</h2></div>
+        <div class="clocks"><div class="clock"><div><div class="clock-city">中国 · 澳门/杭州</div><div class="clock-time" id="cnClock">--:--:--</div></div><span>🇨🇳</span></div><div class="clock"><div><div class="clock-city">泰国 · 曼谷/清迈</div><div class="clock-time" id="thClock">--:--:--</div></div><span>🇹🇭</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="mapSection">
+      <div class="section-head"><div><h2>行程总览地图</h2><p>选择某一天查看完整路线，点击地点查看介绍与导航。</p></div><button class="pill-btn" id="showAllBtn" type="button">显示全部地点</button></div>
+      <div class="panel map-panel">
+        <div class="map-controls" id="mapControls" aria-label="按天筛选地图"></div>
+        <svg id="tripMap" viewBox="0 0 800 420" role="img" aria-label="曼谷清迈行程示意地图"></svg>
+        <div class="map-hint" id="mapHint">默认显示机场、酒店和主要地标。</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>逐日行程</h2><p>共9天 · 点击日期展开 · 打卡状态自动保存在本机</p></div></div>
+      <div class="days" id="days"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>交通票据</h2><p>起降时间均为当地时间</p></div></div>
+      <div class="info-grid" id="tickets"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>住宿</h2><p>提前抵达时先寄存行李</p></div></div>
+      <div class="info-grid" id="hotels"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>出发前待办</h2><p>勾选状态自动保存</p></div></div>
+      <div class="panel todo-list" id="todos"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h2>旅行贴士</h2><p>这趟旅行最重要的几件小事</p></div></div>
+      <div class="tips">
+        <article class="tip"><div class="tip-icon">🚕</div><h3>曼谷交通</h3><p>跨区打车按高峰预留15—20分钟余量；MO酒店前往CentralWorld和Big C优先步行或轨道交通。</p></article>
+        <article class="tip"><div class="tip-icon">🛶</div><h3>湄南河船班</h3><p>目标乘郑王庙18:10蓝旗船，18:40为备用；出发前再次核对码头公告。</p></article>
+        <article class="tip"><div class="tip-icon">👗</div><h3>寺庙着装</h3><p>大皇宫与寺庙需遮住肩膀和膝盖，避免紧身、透视或破洞服装。</p></article>
+        <article class="tip"><div class="tip-icon">💵</div><h3>准备现金</h3><p>夜市、双条车、船票、Jay So及部分小摊以现金更方便，随身准备小额泰铢。</p></article>
+        <article class="tip"><div class="tip-icon">🍜</div><h3>共享点餐</h3><p>D6和D8餐厅密度较高，每家先点招牌小份共享，现场再按食量加菜。</p></article>
+        <article class="tip"><div class="tip-icon">🌦</div><h3>雨季弹性</h3><p>随身携带轻便雨具；下雨时保留固定预约，把市集和户外停留时间灵活缩短。</p></article>
+      </div>
+    </section>
+
+    <footer>本手册仅保存在当前设备中 · 出发前请再次核对航班、预约、营业时间和船班</footer>
+  </main>
+
+  <div class="modal" id="placeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card"><div class="modal-top"><div><a class="modal-location" id="modalLocation" target="_blank" rel="noopener">地点 · 点击导航 ↗</a><h2 id="modalTitle"></h2></div><button class="modal-close" id="modalClose" type="button" aria-label="关闭">×</button></div><div class="modal-block"><strong>一句话推荐</strong><p id="modalWhy"></p></div><div class="modal-block"><strong>必看 / 必吃</strong><p id="modalMust"></p></div><div class="modal-block"><strong>体验建议</strong><p id="modalTip"></p></div><a class="nav-link" id="modalNav" target="_blank" rel="noopener">打开地图导航</a></div>
+  </div>
+  <div class="toast" id="toast">已保存</div>
+
+  <script>
+  (()=>{
+    const TZ='泰国时间';
+    const places={
+      bkkAirport:{name:'素万那普机场',query:'Suvarnabhumi Airport',x:735,y:185,city:'曼谷',why:'泰国旅程的第一站，也是返程机场。',must:'机场快线ARL、值机与退税柜台。',tip:'国际航班预留约3小时；返程先确认退税再托运行李。',major:true},
+      dmk:{name:'廊曼国际机场',query:'Don Mueang International Airport',x:675,y:54,city:'曼谷',why:'曼谷与清迈之间的国内航班机场。',must:'SL508与FD3440航班。',tip:'基础票价通常不含托运行李，提前在线购买。',major:true},
+      rama9:{name:'Bangkok City Rama 9 Hotel',query:'Bangkok City Rama 9 Hotel',x:620,y:128,city:'曼谷',why:'前两晚落脚点，靠近MRT Phra Ram 9。',must:'15:00后办理入住。',tip:'D1先寄存行李，晚上回店再入住。',major:true},
+      catKitchen:{name:'猫的厨房',query:'Bangkok City Rama 9 Hotel',x:614,y:143,city:'曼谷',why:'抵达曼谷后的第一顿本地小馆。',must:'冬阴功虾浓汤、冬阴功炒饭。',tip:'位于酒店对面小巷，以酒店作为导航定位。'},
+      watPaknam:{name:'水门寺',query:'Wat Paknam Phasi Charoen',x:315,y:294,city:'曼谷',why:'河畔寺院与巨型金色大佛同框，适合下午拍摄。',must:'69米金色大佛、寺院内部与河畔。',tip:'从Rama 9跨区打车预留60—70分钟。',major:true},
+      sabaidee:{name:'Sabaidee Massage',query:'Sabaidee Massage Charat Mueang Bangkok',x:470,y:205,city:'曼谷',why:'连接水门寺与朱拉隆功夜市的放松一站。',must:'足底＋肩颈约1小时。',tip:'可提前联系确认当日位置和空位。'},
+      chula:{name:'朱拉隆功夜市',query:'Banthat Thong Road Bangkok',x:488,y:210,city:'曼谷',why:'曼谷密集又热闹的夜间美食区域。',must:'两晚分开吃生腌海鲜和冬阴功妈妈面。',tip:'餐厅距离近，步行串联；热门店先取号。',major:true},
+      panee:{name:'帕尼虾蘸鱼露',query:'Pa Nee Kung Chae Nam Pla Bangkok',x:497,y:197,city:'曼谷',why:'酸、辣、鲜同时到位的生腌虾。',must:'生腌虾、酸辣酱、炸洋葱。',tip:'D1按摩后前往，按小份共享。'},
+      baankook:{name:'Baan Kook Kai',query:'Baan Kook Kai Bangkok',x:476,y:219,city:'曼谷',why:'朱拉隆功区域的浓郁冬阴功妈妈面。',must:'虞书欣同款冬阴功妈妈面。',tip:'与帕尼组成D1晚餐，每家控制分量。'},
+      somsom:{name:'Som Som Seafood',query:'Som Som Seafood Bangkok',x:500,y:221,city:'曼谷',why:'适合午市第一波前往的热门泰式海鲜。',must:'咖喱蟹、虾蟹及泰式海鲜。',tip:'仅现场候位，10:00从Rama 9酒店出发，11:00到店。'},
+      palace:{name:'大皇宫与玉佛寺',query:'The Grand Palace Bangkok',x:328,y:164,city:'曼谷',why:'曼谷老城最具代表性的宫殿与宗教建筑群。',must:'玉佛寺、回廊壁画、宫殿建筑。',tip:'衣着遮肩过膝；15:30停止售票。',major:true},
+      thaTien:{name:'Tha Tien码头',query:'Tha Tien Pier Bangkok',x:319,y:184,city:'曼谷',why:'连接大皇宫东岸与郑王庙的摆渡码头。',must:'过河摆渡船。',tip:'从大皇宫出口步行约13—18分钟。'},
+      watArun:{name:'郑王庙',query:'Wat Arun Bangkok',x:292,y:191,city:'曼谷',why:'湄南河畔最有辨识度的高棉式主塔。',must:'主塔瓷片装饰与傍晚河景。',tip:'17:45前结束游览，前往观光船码头。',major:true},
+      iconSiam:{name:'暹罗天地 ICONSIAM',query:'ICONSIAM Bangkok',x:415,y:238,city:'曼谷',why:'坐船直达的河畔商场，也是本次POP MART重点站。',must:'七层POP MART旗舰店、G层SookSiam。',tip:'下船后先去POP MART，再逛低楼层。',major:true},
+      popmart:{name:'POP MART ICONSIAM',query:'POP MART ICONSIAM',x:425,y:228,city:'曼谷',why:'东南亚地标旗舰店，陈列和限定款最值得看。',must:'泰国限定、门店限定和大型装置。',tip:'预留约2小时，热门库存以当天为准。'},
+      momo:{name:'MOMO Hotel',query:'MOMO Hotel Chiang Mai',x:177,y:183,city:'清迈',why:'四晚清迈古城落脚点，去多处餐厅都很近。',must:'14:00后入住。',tip:'抵达后先寄存行李，再去Slowly。',major:true},
+      cnx:{name:'清迈国际机场',query:'Chiang Mai International Airport',x:75,y:258,city:'清迈',why:'进入泰北慢生活的门户。',must:'SL508抵达、FD3440离开。',tip:'前往古城约20—30分钟。',major:true},
+      slowly:{name:'พิถี Slowly',query:'พิถี Slowly Chiang Mai',x:170,y:197,city:'清迈',why:'清迈第一顿，用一碗泰式粉面慢慢进入节奏。',must:'牛肉汤粉、冬阴功粉面。',tip:'上菜约需1小时，预留充足时间。'},
+      baanKang:{name:'Baan Kang Wat艺术村',query:'Baan Kang Wat Chiang Mai',x:69,y:167,city:'清迈',why:'木屋、手作和绿意组成的清迈慢生活切片。',must:'手作工坊、泰式木屋、Yook Samai。',tip:'到达后先去Yook Samai取号。',major:true},
+      yook:{name:'Yook Samai',query:'Yook Samai Chiang Mai',x:80,y:158,city:'清迈',why:'艺术村里人气很高的泰北味道。',must:'泰北鸡腿咖喱面、牛肉打抛饭。',tip:'等待时逛小店，给夜市留出食量。'},
+      cmuMarket:{name:'清迈大学后门夜市',query:'Chiang Mai University Night Market',x:99,y:108,city:'清迈',why:'学生常去的平价夜市，食物选择密集。',must:'Nuea Nuea打抛饭、龙眼冰、香蕉飞饼、炸土豆、榴莲。',tip:'明确导航大学后门夜市。',major:true},
+      nuea:{name:'Kaphrao Nuea Nuea',query:'Kaphrao Nuea Nuea Chiang Mai',x:110,y:116,city:'清迈',why:'本次行程重点打抛饭。',must:'牛肉打抛饭加双蛋。',tip:'作为夜市主食，其余小吃按小份尝。'},
+      prison:{name:'女子监狱按摩',query:'Chiang Mai Women Correctional Institution Vocational Training Center',x:172,y:166,city:'清迈',why:'兼具公益意义与扎实手法的古城按摩。',must:'早间按摩体验。',tip:'距离MOMO约300米，步行前往；提前预约或早到取号。'},
+      jj:{name:'Jing Jai Market',query:'Jing Jai Market Chiang Mai',x:194,y:76,city:'清迈',why:'周六早午间摊位丰富的农夫与手作市集。',must:'猪肉面、斑斓蛋卷、椰子烤饼。',tip:'到达后先找目标食物，再逛手作区。',major:true},
+      khaoSoi:{name:'Khao Soi Nimman',query:'Khao Soi Nimman Chiang Mai',x:116,y:112,city:'清迈',why:'宁曼路代表性的泰北咖喱面。',must:'邓丽君同款泰北咖喱面。',tip:'JJ市集小吃控制分量。'},
+      nimman:{name:'One Nimman',query:'One Nimman Chiang Mai',x:127,y:125,city:'清迈',why:'适合慢逛的设计师店与文创街区。',must:'设计师店、香水精油、文创小店。',tip:'The Volcano和Joost均在周边。',major:true},
+      volcano:{name:'The Volcano',query:'The Volcano Nimman Chiang Mai',x:137,y:131,city:'清迈',why:'逛宁曼路时的一份热乎甜点。',must:'斑斓芝士吐司。',tip:'饱腹感较强，建议共享。'},
+      joost:{name:'Joost Smoothies',query:'Joost Smoothies Nimman Chiang Mai',x:145,y:119,city:'清迈',why:'清迈炎热下午的一杯季节水果冰沙。',must:'山竹冰沙。',tip:'季节限定，售罄时以现场为准。'},
+      ekachan:{name:'Ekachan',query:'Ekachan Chiang Mai',x:220,y:205,city:'清迈',why:'用泰式融合菜收束宁曼路的一天。',must:'牛肉沙拉、鱼露鸡翅、软炸蟹。',tip:'提前预约10月3日18:00。'},
+      darley:{name:'Darley Hotel斜对面榴莲摊',query:'Darley Hotel Chiang Mai',x:214,y:178,city:'清迈',why:'以酒店为定位的高性价比金枕榴莲摊。',must:'按喜欢的软硬度挑选金枕。',tip:'约20:00收摊，19:35左右抵达。'},
+      kati:{name:'Kati Breakfast & Brunch',query:'Kati Breakfast and Brunch Chiang Mai',x:184,y:184,city:'清迈',why:'出发去竹家庭市场前的悠闲早午餐。',must:'Kati法式吐司、牛油果吐司。',tip:'10:55左右结账，步行前往OHU。'},
+      ohu:{name:'OHU Bakery',query:'OHU Bakery Chiang Mai',x:190,y:194,city:'清迈',why:'适合打包在路上吃的周末限定烘焙。',must:'韩式贝果、碱水包。',tip:'11:00开门，可能提前售罄。'},
+      bamboo:{name:'Bamboo Family Market',query:'Bamboo Family Market Chiang Mai',x:325,y:225,city:'清迈',why:'竹林里的手作市集，氛围比规模更迷人。',must:'竹林、手作摊位、农夫市集。',tip:'距离古城约35—45分钟，携带现金。',major:true},
+      khamfu:{name:'Khamfu Restaurant',query:'Khamfu Restaurant Chiang Mai',x:181,y:188,city:'清迈',why:'从竹家庭市场回古城后的稳定泰北正餐。',must:'菠萝饭、烤鱿鱼。',tip:'餐厅距离MOMO步行约4分钟。'},
+      cosmetics:{name:'Chiang Mai Cosmetics',query:'Chiang Mai Cosmetics',x:166,y:186,city:'清迈',why:'逛周日夜市前顺路补充药妆。',must:'药妆与可退税商品。',tip:'保留票据并现场确认退税条件。'},
+      sunday:{name:'清迈周日夜市',query:'Sunday Walking Street Chiang Mai',x:202,y:182,city:'清迈',why:'清迈规模最大的周日限定步行街。',must:'塔佩门至古城主街的夜市摊位。',tip:'17:45开始逛，越晚人越多。',major:true},
+      jungle:{name:'Jungle Flight Chiang Mai',query:'Jungle Flight Chiang Mai',x:341,y:54,city:'清迈',why:'在热带雨林中完成高空滑索体验。',must:'JF项目、雨林高空线路。',tip:'固定早场，穿包脚运动鞋；午餐简单吃。',major:true},
+      aoyjai:{name:'Aoyjai Kitchen',query:'Aoyjai Kitchen Chiang Mai',x:188,y:211,city:'清迈',why:'丛林飞跃后用海鲜打抛饭补充体力。',must:'海鲜打抛饭。',tip:'16:15到店。'},
+      jayso:{name:'Jay So Hotpot',query:'Jay So Hotpot Chiang Mai',x:213,y:151,city:'清迈',why:'本地感很强、价格轻松的瓦罐小火锅。',must:'瓦罐小火锅。',tip:'只收现金，按小份点餐。'},
+      tomyum:{name:'Tom Yam Kai Wan Noodle',query:'Tom Yam Kai Wan Noodle Suan Dok Gate Chiang Mai',x:147,y:194,city:'清迈',why:'用酸辣海鲜面完成当晚第二场。',must:'海鲜冬阴功面、溏心蛋。',tip:'分量较大，建议共享。'},
+      dang:{name:'Dang Muay Thai',query:'Dang Muay Thai Chiang Mai',x:146,y:166,city:'清迈',why:'中文沟通友好、适合新手的泰拳私教。',must:'09:00私教课。',tip:'课程90分钟；前一晚收好行李。',major:true},
+      mo:{name:'MO酒店拉差贴威',query:'Mo Hotel Ratchathewi Bangkok',x:543,y:154,city:'曼谷',why:'最后两晚落脚点，前往市中心购物方便。',must:'酒店早餐、14:00后入住。',tip:'去CentralWorld和Big C优先步行或轨道交通。',major:true},
+      central:{name:'CentralWorld',query:'CentralWorld Bangkok',x:528,y:190,city:'曼谷',why:'航班抵达曼谷后的晚餐与轻购物站。',must:"Kub Kao’ Kub Pla与商场。",tip:'先吃饭，再按剩余时间购物。',major:true},
+      kubkao:{name:"Kub Kao’ Kub Pla",query:"Kub Kao Kub Pla CentralWorld",x:520,y:183,city:'曼谷',why:'不用额外绕路的商场泰式正餐。',must:'金钱虾饼、咖喱炒蟹、芒果糯米饭。',tip:'位于CentralWorld三层。'},
+      bigc:{name:'Big C拉差丹利店',query:'Big C Supercenter Ratchadamri Bangkok',x:548,y:197,city:'曼谷',why:'集中购买伴手礼和日用品的一站。',must:'零食、调味品、伴手礼。',tip:'从MO酒店步行或公共交通约22分钟。',major:true},
+      pupong:{name:'普蓬费与扎蓬费',query:'普蓬费与扎蓬费 曼谷',x:493,y:215,city:'曼谷',why:'D8的生腌蟹与生腌海鲜重点。',must:'生腌蟹、生腌海鲜。',tip:'点招牌菜共享，为Jeh O留食量。'},
+      jeho:{name:'Jeh O Chula',query:'Jeh O Chula Bangkok',x:468,y:218,city:'曼谷',why:'排队本身也是体验的一部分的冬阴功妈妈面。',must:'冬阴功酸辣海鲜妈妈面。',tip:'17:00先查看队伍或取号，再去其他店。'}
+    };
+
+    const days=[
+      {date:'09.30 周三',title:'澳门 → 曼谷｜水门寺与朱拉隆功',summary:'落地 · 河畔寺院 · 按摩 · 两家晚餐',items:[
+        ['d1-1','07:45—09:35','NX996｜澳门 → 曼谷','澳门国际机场飞往素万那普机场，飞行2小时50分钟。',['航班'],'bkkAirport',''],
+        ['d1-2','09:35—11:30','入境、取行李、前往酒店','机场快线ARL至Makkasan，换MRT蓝线至Phra Ram 9，再步行到酒店。',['交通'],'rama9','约1小时45分钟'],
+        ['d1-3','11:30','酒店寄存行李','在Bangkok City Rama 9 Hotel寄存行李。',['住宿'],'rama9',''],
+        ['d1-4','12:00—12:50','猫的厨房午餐','主打：冬阴功虾浓汤、冬阴功炒饭。\n特点：汤底浓郁，人均约40元。',['美食'],'catKitchen','步行约3分钟'],
+        ['d1-5','13:00—14:10','前往水门寺','使用Grab或出租车，按曼谷跨区路况预留。',['交通'],'watPaknam','约60—70分钟'],
+        ['d1-6','14:10—15:40','Wat Paknam Phasi Charoen 水门寺','金色大佛、寺院内部、河畔区域及外景拍摄。',['游玩'],'watPaknam',''],
+        ['d1-7','15:40—16:20','前往朱拉隆功区域','使用Grab或出租车。',['交通'],'sabaidee','约30—40分钟'],
+        ['d1-8','16:30—17:30','Sabaidee Massage','足底＋肩颈按摩约1小时，支持支付宝。',['预约'],'sabaidee',''],
+        ['d1-9','17:40—18:15','帕尼虾蘸鱼露','ป้านี กุ้งแช่น้ำปลา / Pa Nee Goong Chae Nam Pla / 帕尼虾蘸鱼露\n主打：生腌虾蘸鱼露；特点：搭配酸辣酱和炸洋葱，人均约35元。',['美食'],'panee','步行约5—10分钟'],
+        ['d1-10','18:30—19:20','Baan Kook Kai','บ้านกุ๊กไก่ / BAAN KOOK KAI / Baan Kook Kai\n主打：冬阴功妈妈面；特点：虞书欣同款，汤底浓郁，人均约78元。',['美食'],'baankook','步行约10分钟'],
+        ['d1-11','19:20—20:10','朱拉隆功夜市','沿Banthat Thong区域散步逛吃。',['游玩'],'chula',''],
+        ['d1-12','20:10—20:50','返回酒店并办理入住','Bangkok City Rama 9 Hotel，15:00后可办理入住。',['住宿'],'rama9','约30—40分钟']
+      ]},
+      {date:'10.01 周四',title:'曼谷经典河畔日',summary:'Som Som · 大皇宫 · 郑王庙 · 蓝旗船 · POP MART',items:[
+        ['d2-1','08:00—09:45','化妆、整理','为大皇宫与郑王庙外景做准备。',['准备'],null,''],
+        ['d2-2','09:50—11:00','前往Som Som','09:50呼叫Grab，10:00从酒店出发，11:00到店。',['交通','注意'],'somsom','约50分钟'],
+        ['d2-3','11:00—12:20','Som Som Seafood午餐','ส้ม ส้ม ซีฟู้ด / Som Som Seafood / 松松海鲜\n主打：咖喱蟹、虾蟹及泰式海鲜；特点：仅现场候位，中午到店排队，人均约139元。',['美食','注意'],'somsom',''],
+        ['d2-4','12:20—13:00','前往大皇宫','使用Grab或出租车，距离约5.3公里。',['交通'],'palace','约25—40分钟'],
+        ['d2-5','13:00—15:10','大皇宫＋玉佛寺','参观玉佛寺、回廊壁画和宫殿建筑群。衣着需遮住肩膀和膝盖。',['游玩','注意'],'palace',''],
+        ['d2-6','15:10—15:50','步行至码头并摆渡过河','步行前往Tha Tien码头，候船后乘摆渡船过河。',['交通'],'thaTien','约40分钟'],
+        ['d2-7','15:50—17:45','郑王庙 Wat Arun','主塔、瓷片装饰、湄南河景观及傍晚外景。',['游玩'],'watArun',''],
+        ['d2-8','17:45—18:10','前往码头候船','目标乘18:10蓝旗船，18:40为备用班次。',['交通','注意'],'watArun','步行＋候船约25分钟'],
+        ['d2-9','18:10—18:26','蓝旗船｜郑王庙 → ICONSIAM','建议坐二层右侧，拍摄郑王庙及湄南河两岸。',['交通'],'iconSiam','约16分钟'],
+        ['d2-10','18:30—20:30','POP MART ICONSIAM','七层旗舰店，重点看泰国限定、门店限定和大型装置。',['购物'],'popmart','步行约10分钟'],
+        ['d2-11','20:30—21:20','SookSiam＋河边区域','สุขสยาม / SookSiam / 暹罗天地室内水上市场\n主打：泰国各地小吃、甜品和饮料；21:00可看河边喷泉。',['游玩','美食'],'iconSiam',''],
+        ['d2-12','21:20—22:00','返回酒店','使用Grab或出租车返回Bangkok City Rama 9 Hotel。',['住宿'],'rama9','约30—40分钟']
+      ]},
+      {date:'10.02 周五',title:'曼谷 → 清迈｜古城与大学夜市',summary:'SL508 · Slowly · 艺术村 · 大学后门夜市',items:[
+        ['d3-1','07:00—07:40','起床、整理、退房','检查证件和托运行李额。',['准备'],null,''],
+        ['d3-2','08:00—09:00','前往廊曼机场','使用Grab或出租车。',['交通'],'dmk','约40—60分钟'],
+        ['d3-3','11:05—12:20','SL508｜曼谷 → 清迈','提前在泰国狮航官网购买托运行李额；手提行李约7公斤，以订单为准。',['航班','注意'],'cnx',''],
+        ['d3-4','12:20—13:15','取行李，前往MOMO Hotel','使用Grab、出租车或红色双条车。',['交通'],'momo','约20—30分钟'],
+        ['d3-5','13:15','酒店寄存行李','MOMO Hotel于14:00后办理入住。',['住宿'],'momo',''],
+        ['d3-6','13:30—14:50','พิถี Slowly午餐','พิถี / Slowly / Slowly泰式粉面店\n主打：牛肉汤粉、冬阴功粉面；特点：上菜较慢，用餐及等待预留约1小时。',['美食','注意'],'slowly','约5分钟'],
+        ['d3-7','15:00','办理入住','返回MOMO Hotel办理入住。',['住宿'],'momo','约5分钟'],
+        ['d3-8','15:10—16:10','化妆、整理','为艺术村和夜市外景做准备。',['准备'],null,''],
+        ['d3-9','16:10—16:35','前往Baan Kang Wat','使用Grab。',['交通'],'baanKang','约25分钟'],
+        ['d3-10','16:35—18:00','Baan Kang Wat＋Yook Samai','抵达后先到Yook Samai取号。\n主打：泰北鸡腿咖喱面、牛肉打抛饭；等待时逛木屋和手作工坊。',['游玩','美食'],'baanKang',''],
+        ['d3-11','18:00—18:20','前往清迈大学后门夜市','使用Grab。',['交通'],'cmuMarket','约15—20分钟'],
+        ['d3-12','18:20—21:00','清迈大学后门夜市','Kaphrao Nuea Nuea主打牛肉打抛饭，建议加双蛋。另吃龙眼冰、香蕉飞饼、炸土豆和中段婆婆榴莲摊的金枕。',['美食','游玩'],'cmuMarket',''],
+        ['d3-13','21:00—21:30','返回酒店','使用Grab返回MOMO Hotel。',['住宿'],'momo','约20—30分钟']
+      ]},
+      {date:'10.03 周六',title:'清迈市集与宁曼路',summary:'女子监狱按摩 · JJ市集 · 宁曼路 · Ekachan',items:[
+        ['d4-1','08:50—09:00','步行前往女子监狱按摩','距离MOMO Hotel约300米。',['交通'],'prison','步行约4分钟'],
+        ['d4-2','09:00—10:00','女子监狱按摩','公益按摩，提前预约或早到取号。',['预约'],'prison',''],
+        ['d4-3','10:00—10:10','步行返回酒店','返回MOMO Hotel。',['交通'],'momo','步行约4分钟'],
+        ['d4-4','10:10—11:10','化妆、整理','为市集和宁曼路外景做准备。',['准备'],null,''],
+        ['d4-5','11:10—11:30','前往JJ市集','使用Grab。',['交通'],'jj','约13—20分钟'],
+        ['d4-6','11:30—13:00','Jing Jai Market','先找猪肉面、斑斓蛋卷、椰子烤饼，再逛农夫与手作摊位。',['游玩','美食'],'jj',''],
+        ['d4-7','13:00—13:25','前往宁曼路','使用Grab前往Khao Soi Nimman。',['交通'],'khaoSoi','约20—25分钟'],
+        ['d4-8','13:30—14:15','Khao Soi Nimman午餐','ข้าวซอยนิมมาน / Khao Soi Nimman / 宁曼路泰北咖喱面\n主打：邓丽君同款泰北咖喱面。',['美食'],'khaoSoi',''],
+        ['d4-9','14:15—15:25','One Nimman及宁曼路','逛设计师店、香水精油店、Playworks和Rabbit & Friends。',['购物','游玩'],'nimman','步行约5—10分钟'],
+        ['d4-10','15:30—16:00','The Volcano','The Volcano / The Volcano吐司店\n主打：斑斓芝士吐司；建议共享。',['美食'],'volcano','步行约5—10分钟'],
+        ['d4-11','16:10—16:40','Joost Smoothies','Joost Smoothies drink healthy / Joost鲜果冰沙\n主打：山竹冰沙；季节限定，库存以当天为准。',['美食'],'joost','步行约10分钟'],
+        ['d4-12','16:40—17:20','继续逛宁曼路','自由逛街。',['游玩'],'nimman',''],
+        ['d4-13','17:20—17:50','前往Ekachan','使用Grab。',['交通'],'ekachan','约20—30分钟'],
+        ['d4-14','18:00—19:20','Ekachan晚餐','เอกฉันท์ / Ekachan / Ekachan泰式融合餐厅\n主打：牛肉沙拉、鱼露鸡翅、软炸蟹。提前预约10月3日18:00。',['美食','预约'],'ekachan',''],
+        ['d4-15','19:35—20:00','Darley Hotel斜对面榴莲摊','主打：金枕榴莲；可请老板按喜欢的软硬度挑选。',['美食'],'darley','约10—15分钟'],
+        ['d4-16','20:00—20:20','返回酒店','使用Grab返回MOMO Hotel。',['住宿'],'momo','约15—20分钟']
+      ]},
+      {date:'10.04 周日',title:'竹林市集与周日夜市',summary:'Kati · OHU · 竹家庭市场 · Khamfu · 周日夜市',items:[
+        ['d5-1','08:00—10:00','化妆、整理','10:00出门。',['准备'],null,''],
+        ['d5-2','10:10—10:55','Kati早午餐','กะทิ / Kati Breakfast & Brunch / Kati早午餐\n主打：Kati法式吐司、牛油果吐司；人均约40—60元。',['美食'],'kati','约10分钟'],
+        ['d5-3','10:55—11:05','步行前往OHU','距离约600米。',['交通'],'ohu','步行约9分钟'],
+        ['d5-4','11:05—11:25','OHU Bakery外带','OHU Bakery / OHU烘焙坊\n主打：韩式贝果、碱水包；购买后带在路上吃。',['美食'],'ohu',''],
+        ['d5-5','11:25—12:10','前往竹家庭市场','使用Grab，距离约16.6公里。',['交通'],'bamboo','约35—45分钟'],
+        ['d5-6','12:10—13:40','Bamboo Family Market','竹林、手作摊位和农夫市集，携带现金。',['游玩'],'bamboo',''],
+        ['d5-7','13:40—14:10','前往Khamfu Restaurant','使用Grab，距离约15.8公里。',['交通'],'khamfu','约25—30分钟'],
+        ['d5-8','14:10—15:30','Khamfu Restaurant午餐','Khamfu Restaurant / Khamfu泰国餐厅\n主打：菠萝饭、烤鱿鱼；特点：泰北风味，菜品丰富，人均约105元。',['美食'],'khamfu',''],
+        ['d5-9','15:30—17:00','返回酒店休息','Khamfu距离MOMO Hotel约300米，步行返回。',['住宿'],'momo','步行约4分钟'],
+        ['d5-10','17:15—17:45','Chiang Mai Cosmetics','购买药妆，保留票据并咨询退税。',['购物'],'cosmetics','约10—15分钟'],
+        ['d5-11','17:45—22:00','清迈周日夜市','塔佩门步行街，边逛边吃。',['游玩','美食'],'sunday','步行约5—10分钟'],
+        ['d5-12','22:00—22:30','返回酒店','返回MOMO Hotel。',['住宿'],'momo','约20—30分钟']
+      ]},
+      {date:'10.05 周一',title:'雨林穿越与古城美食',summary:'Jungle Flight · Aoyjai · Jay So · 冬阴功面',items:[
+        ['d6-1','06:45—08:30','化妆、整理','准备丛林飞跃外景。',['准备'],null,''],
+        ['d6-2','08:30—09:00','等待接送','在确认的酒店集合点等待。',['交通','注意'],'momo',''],
+        ['d6-3','09:00—13:30/14:00','Jungle Flight Chiang Mai','热带雨林高空滑索，包含往返接送和泰式午餐。',['游玩','预约'],'jungle',''],
+        ['d6-4','14:00—15:20','返回酒店、洗澡整理','项目结束后休息缓冲。',['休息'],'momo',''],
+        ['d6-5','15:30—16:15','前往Aoyjai','使用Grab，预留等车和找店时间。',['交通'],'aoyjai','约20—30分钟'],
+        ['d6-6','16:15—17:10','Aoyjai Kitchen','ครัวอ้อยใจ / Aoyjai Kitchen / Aoyjai厨房\n主打：海鲜打抛饭；评分约4.9，人均约20元。',['美食'],'aoyjai',''],
+        ['d6-7','17:10—18:30','返回酒店休息','洗漱并为晚餐留出缓冲。',['休息'],'momo','约15—20分钟'],
+        ['d6-8','18:30—19:00','前往Jay So','使用Grab。',['交通'],'jayso','约15—25分钟'],
+        ['d6-9','19:00—19:50','Jay So Hotpot','Jay So Hotpot / Jay So瓦罐小火锅\n主打：本地瓦罐小火锅；人均约17元，只收现金。',['美食'],'jayso',''],
+        ['d6-10','19:50—20:10','前往Tom Yam Kai Wan','使用Grab。',['交通'],'tomyum','约10—15分钟'],
+        ['d6-11','20:10—21:10','Tom Yam Kai Wan Noodle','ก๋วยเตี๋ยวต้มยำไข่หวานประตูสวนดอกเชียงใหม่ / Tom Yam Kai Wan Noodle @ Suan Dok Gate Chiangmai / 松达门甜蛋冬阴功面\n主打：海鲜冬阴功面、溏心蛋；分量较大，建议共享。',['美食'],'tomyum',''],
+        ['d6-12','21:10—21:30','返回酒店','使用Grab返回MOMO Hotel。',['住宿'],'momo','约15—20分钟']
+      ]},
+      {date:'10.06 周二',title:'泰拳私教与返回曼谷',summary:'Dang Muay Thai · FD3440 · CentralWorld晚餐',items:[
+        ['d7-1','08:00','起床、简单补充能量','行李在前一晚基本整理完成。',['准备'],null,''],
+        ['d7-2','08:40—09:00','前往Dang Muay Thai','距离约1公里，可步行或乘Grab。',['交通'],'dang','步行约13分钟'],
+        ['d7-3','09:00—10:30','Dang Muay Thai泰拳私教','教练会中文，对新手友好；课程安排90分钟。',['预约','游玩'],'dang',''],
+        ['d7-4','10:30—11:50','返回酒店、洗澡、整理','回MOMO Hotel完成退房准备。',['准备'],'momo','约15分钟'],
+        ['d7-5','12:00—13:00','退房、寄存行李、午餐','完成退房并简单用餐。',['住宿'],'momo',''],
+        ['d7-6','13:00—14:00','取行李，前往清迈机场','使用Grab或出租车。',['交通'],'cnx','约30—40分钟'],
+        ['d7-7','16:30—17:40','FD3440｜清迈 → 曼谷','提前在亚洲航空App或官网购买托运行李额；手提2件合计不超过7公斤。',['航班','注意'],'dmk',''],
+        ['d7-8','17:40—19:40','取行李，前往MO酒店','建议直接使用Grab或出租车，按晚高峰预留。',['交通'],'mo','约50—80分钟'],
+        ['d7-9','19:40—20:00','办理入住、放下行李','MO酒店拉差贴威。',['住宿'],'mo',''],
+        ['d7-10','20:00—20:25','前往CentralWorld','优先步行或乘BTS，避免晚高峰短途堵车。',['交通'],'central','约15—25分钟'],
+        ['d7-11','20:25—21:30',"Kub Kao’ Kub Pla晚餐","กับข้าว' กับปลา / Kub Kao’ Kub Pla / Kub Kao’ Kub Pla泰餐\n主打：金钱虾饼、咖喱炒蟹、芒果糯米饭；位于CentralWorld三层，人均约150元。",['美食'],'kubkao',''],
+        ['d7-12','21:30—22:00','CentralWorld','按商场剩余营业时间轻松逛街。',['购物'],'central',''],
+        ['d7-13','22:00后','返回酒店','步行或乘BTS返回MO酒店。',['住宿'],'mo','约15—25分钟']
+      ]},
+      {date:'10.07 周三',title:'采购与朱拉隆功第二夜',summary:'酒店早餐 · Big C · 普蓬费 · Jeh O',items:[
+        ['d8-1','07:30—08:00','酒店早餐','在MO酒店用早餐。',['美食'],'mo',''],
+        ['d8-2','08:00—09:30','化妆、整理','准备购物和夜市外景。',['准备'],null,''],
+        ['d8-3','09:30—10:00','前往Big C','从MO酒店步行或乘公共交通。',['交通'],'bigc','约22分钟'],
+        ['d8-4','10:00—12:00','Big C拉差丹利店','采购伴手礼、零食、调味品和日用品，符合条件时咨询退税。',['购物'],'bigc',''],
+        ['d8-5','12:00—13:00','简单午餐','在Big C区域用餐。',['美食'],'bigc',''],
+        ['d8-6','13:00—16:00','返回酒店休息','整理购物品，为夜市留出体力。',['休息'],'mo','约25—30分钟'],
+        ['d8-7','16:30—17:00','前往朱拉隆功','使用Grab或公共交通。',['交通'],'chula','约20—30分钟'],
+        ['d8-8','17:00','查看Jeh O队伍','先查看队伍或取号，再去吃生腌海鲜。',['注意'],'jeho',''],
+        ['d8-9','17:20—18:00','普蓬费与扎蓬费','主打：生腌蟹、生腌海鲜；特点：点招牌菜共享，人均约184元。',['美食'],'pupong','步行约5分钟'],
+        ['d8-10','18:00—19:30','朱拉隆功夜市','根据Jeh O叫号进度灵活逛夜市。',['游玩'],'chula',''],
+        ['d8-11','19:30—21:30','Jeh O Chula','ร้านเจ๊โอว / Jeh O Chula / 杰奥朱拉\n主打：冬阴功酸辣海鲜妈妈面；特点：人均约86元，入座时间以现场叫号为准。',['美食','注意'],'jeho',''],
+        ['d8-12','21:30—22:00','返回酒店','返回MO酒店。',['住宿'],'mo','约20—30分钟']
+      ]},
+      {date:'10.08 周四',title:'曼谷 → 杭州',summary:'酒店早餐 · 退房 · JD420',items:[
+        ['d9-1','07:00—07:30','酒店早餐','在MO酒店用早餐。',['美食'],'mo',''],
+        ['d9-2','07:30—08:30','整理行李、检查证件','检查护照、登机信息、行李重量、充电器、退税材料和购物票据。',['准备'],null,''],
+        ['d9-3','08:40','退房','完成房间检查并退房。',['住宿'],'mo',''],
+        ['d9-4','09:00—10:00','前往素万那普机场','BTS Ratchathewi至Phaya Thai，换乘机场快线ARL；行李多时可直接打车。',['交通'],'bkkAirport','约1小时'],
+        ['d9-5','10:00—12:20','值机、托运及退税','为国际航班预留充足时间。',['准备'],'bkkAirport',''],
+        ['d9-6','12:50','JD420｜曼谷 → 杭州','Y/H/K/L/M/X舱托运20公斤；V/N/A/U/T舱无免费托运；手提1件不超过7公斤。以订单为准。',['航班','注意'],'bkkAirport','']
+      ]}
+    ];
+
+    const tickets=[
+      {code:'NX996',route:'澳门 MFM → 曼谷 BKK',time:'09月30日 07:45—09:35',note:'飞行2小时50分钟｜订单号：待补充'},
+      {code:'SL508',route:'曼谷 DMK → 清迈 CNX',time:'10月02日 11:05—12:20',note:'提前官网购买托运行李额｜订单号：待补充'},
+      {code:'FD3440',route:'清迈 CNX → 曼谷 DMK',time:'10月06日 16:30—17:40',note:'提前亚航App/官网购买托运行李额｜订单号：待补充'},
+      {code:'JD420',route:'曼谷 BKK → 杭州 HGH',time:'10月08日 12:50起飞',note:'按舱位确认托运行李额｜订单号：待补充'}
+    ];
+    const hotels=[
+      {name:'Bangkok City Rama 9 Hotel',date:'09月30日—10月02日 · 曼谷',check:'15:00后入住',note:'D1先寄存行李，晚上回店办理入住｜订单号：待补充'},
+      {name:'MOMO Hotel',date:'10月02日—10月06日 · 清迈',check:'14:00后入住',note:'抵达后先寄存行李，Slowly用餐后回店入住｜订单号：待补充'},
+      {name:'MO酒店拉差贴威',date:'10月06日—10月08日 · 曼谷',check:'14:00后入住',note:'包含早餐｜订单号：待补充'}
+    ];
+    const todoItems=[
+      '在泰国狮航官网购买SL508托运行李额',
+      '在亚洲航空App或官网购买FD3440托运行李额',
+      '预约10月3日18:00的Ekachan',
+      '预约或确认女子监狱按摩取号方式',
+      '确认Jungle Flight套餐与09:00接送地点',
+      '预约10月6日09:00的Dang Muay Thai私教',
+      '出发前核对10月1日蓝旗船时刻',
+      '确认JD420舱位及托运行李额',
+      '补充全部航班与酒店订单号'
+    ];
+
+    const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+    const state={checks:JSON.parse(localStorage.getItem('thaiTripChecks')||'{}'),todos:JSON.parse(localStorage.getItem('thaiTripTodos')||'{}'),mapDay:null,showAll:false};
+    const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const tagClass=t=>t==='注意'||t==='预约'?'warn':t==='航班'?'flight':'';
+    function toast(msg='已保存'){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1400)}
+
+    function renderDays(){
+      $('#days').innerHTML=days.map((day,di)=>{
+        const done=day.items.filter(i=>state.checks[i[0]]).length,total=day.items.length;
+        const events=day.items.map((it,ii)=>{
+          const [id,time,title,note,tags,pk,travel]=it,checked=!!state.checks[id];
+          return `<div class="event-wrap">${travel?`<div class="travel-pill">↳ ${esc(travel)}</div>`:''}<article class="event ${checked?'done':''}" data-event="${id}"><div class="event-dot"></div><div class="event-card"><div class="event-top"><div class="event-main"><div class="event-time">${esc(time)} <span class="tz">${TZ}</span></div><div class="event-title">${pk?`<button class="place-link" data-place="${pk}" type="button">${esc(title)} ⓘ</button>`:esc(title)}</div><p class="event-note">${esc(note)}</p><div class="event-actions">${tags.map(t=>`<span class="tag ${tagClass(t)}">${esc(t)}</span>`).join('')}<button class="check-btn ${checked?'checked':''}" data-check="${id}" type="button">${checked?'✓ 已去过':'○ 打卡'}</button></div></div></div></div></article></div>`;
+        }).join('');
+        return `<article class="day ${di===0?'open':''}" data-day="${di}"><button class="day-header" type="button" aria-expanded="${di===0}"><span class="day-no">D${di+1}</span><span class="day-title"><strong>${esc(day.date)} · ${esc(day.title)}</strong><span>${esc(day.summary)}</span></span><span class="day-progress"><strong>${done}/${total}</strong>完成</span><span class="chev">⌄</span></button><div class="day-body"><div class="day-tools"><span class="route-summary">${esc(day.summary)}</span><button class="ghost-btn" data-map-day="${di}" type="button">查看当天地图</button></div><div class="timeline">${events}</div>${miniMap(di)}</div></article>`;
+      }).join('');
+    }
+    function miniMap(di){
+      const keys=days[di].items.map(i=>i[5]).filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i);
+      if(!keys.length)return'';const w=720,pad=24,step=keys.length>1?(w-pad*2)/(keys.length-1):0;
+      const circles=keys.map((k,i)=>{const x=pad+i*step,p=places[k];return `<circle cx="${x}" cy="25" r="5" fill="var(--card-solid)" stroke="var(--green)" stroke-width="3"/><text x="${x}" y="49" text-anchor="middle">${esc(p.name.slice(0,6))}</text>`}).join('');
+      return `<div class="mini-map"><svg viewBox="0 0 ${w} 62" aria-label="当天路线小地图"><path d="M${pad} 25H${w-pad}" stroke="var(--coral)" stroke-width="3" stroke-dasharray="7 6" fill="none"/>${circles}</svg></div>`;
+    }
+    function updateProgress(di){const d=days[di],done=d.items.filter(i=>state.checks[i[0]]).length;document.querySelector(`[data-day="${di}"] .day-progress strong`).textContent=`${done}/${d.items.length}`}
+
+    function mapKeys(){
+      if(state.showAll)return Object.keys(places);
+      if(state.mapDay!==null)return days[state.mapDay].items.map(i=>i[5]).filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i);
+      return Object.keys(places).filter(k=>places[k].major);
+    }
+    function renderMap(){
+      const svg=$('#tripMap'),keys=mapKeys(),pts=keys.map(k=>places[k]),route=state.mapDay!==null?pts:[];
+      let view='0 0 800 420';
+      if(state.mapDay!==null&&pts.length){const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys),pad=55;view=`${Math.max(0,minX-pad)} ${Math.max(0,minY-pad)} ${Math.min(800,maxX-minX+pad*2)} ${Math.min(420,maxY-minY+pad*2)}`}
+      svg.setAttribute('viewBox',view);
+      const bg=`<path d="M20 40Q125 12 350 52T780 35V385Q580 405 410 372T20 390Z" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="7 9"/><path d="M400 28V395" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 10"/><text x="120" y="45" class="map-city">清迈</text><text x="595" y="45" class="map-city">曼谷</text><path d="M16 270Q170 235 386 280" fill="none" stroke="var(--blue)" stroke-width="16" opacity=".12"/><path d="M410 270Q545 220 790 260" fill="none" stroke="var(--blue)" stroke-width="20" opacity=".2"/>`;
+      const line=route.length>1?`<polyline class="map-route" points="${route.map(p=>`${p.x},${p.y}`).join(' ')}"/>`:'';
+      const marks=keys.map((k,i)=>{const p=places[k],dy=(i%2?18:-13);return `<g data-map-place="${k}" role="button" tabindex="0"><circle class="map-dot ${p.major?'major':''}" cx="${p.x}" cy="${p.y}" r="7"/><text class="map-label" x="${p.x+10}" y="${p.y+dy}">${esc(p.name)}</text></g>`}).join('');
+      svg.innerHTML=bg+line+marks;
+      $$('.map-day-btn').forEach((b,i)=>b.classList.toggle('active',state.mapDay===i&&!state.showAll));
+      $('#showAllBtn').classList.toggle('active',state.showAll);$('#showAllBtn').textContent=state.showAll?'恢复主要地点':'显示全部地点';
+      $('#mapHint').textContent=state.showAll?'当前显示全部地点与餐厅。':state.mapDay!==null?`当前显示 D${state.mapDay+1} 完整路线，已进入放大视图。`:'默认显示机场、酒店和主要地标。';
+    }
+    function renderMapControls(){$('#mapControls').innerHTML=days.map((d,i)=>`<button class="map-day-btn" type="button" data-map-filter="${i}">D${i+1} · ${esc(d.date.slice(0,5))}</button>`).join('')}
+    function showPlace(key){const p=places[key];if(!p)return;const url=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.query)}`;$('#modalTitle').textContent=p.name;$('#modalLocation').textContent=`${p.city} · 点击导航 ↗`;$('#modalLocation').href=url;$('#modalNav').href=url;$('#modalWhy').textContent=p.why;$('#modalMust').textContent=p.must;$('#modalTip').textContent=p.tip;$('#placeModal').classList.add('open');document.body.style.overflow='hidden';$('#modalClose').focus()}
+    function closeModal(){$('#placeModal').classList.remove('open');document.body.style.overflow=''}
+
+    function renderInfo(){
+      $('#tickets').innerHTML=tickets.map(t=>`<article class="info-card"><h3><span class="ticket-code">${esc(t.code)}</span></h3><p><strong>${esc(t.route)}</strong></p><p>${esc(t.time)}</p><p>${esc(t.note)}</p></article>`).join('');
+      $('#hotels').innerHTML=hotels.map(h=>`<article class="info-card"><h3>${esc(h.name)}</h3><p><strong>${esc(h.date)}</strong></p><p>${esc(h.check)}</p><p>${esc(h.note)}</p></article>`).join('');
+      $('#todos').innerHTML=todoItems.map((t,i)=>`<label class="todo ${state.todos[i]?'done':''}"><input type="checkbox" data-todo="${i}" ${state.todos[i]?'checked':''}><span>${esc(t)}</span></label>`).join('');
+    }
+    function tick(){const target=new Date('2026-09-30T07:45:00+08:00').getTime(),diff=target-Date.now();if(diff<=0){$('[data-u="d"]').textContent='已';$('[data-u="h"]').textContent='经';$('[data-u="m"]').textContent='出';$('[data-u="s"]').textContent='发';return}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);$('[data-u="d"]').textContent=d;$('[data-u="h"]').textContent=String(h).padStart(2,'0');$('[data-u="m"]').textContent=String(m).padStart(2,'0');$('[data-u="s"]').textContent=String(s).padStart(2,'0')}
+    function clocks(){const now=new Date(),fmt=z=>new Intl.DateTimeFormat('zh-CN',{timeZone:z,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);$('#cnClock').textContent=fmt('Asia/Shanghai');$('#thClock').textContent=fmt('Asia/Bangkok')}
+    function setTheme(theme){document.documentElement.dataset.theme=theme;localStorage.setItem('thaiTripTheme',theme);$('#themeIcon').textContent=theme==='dark'?'☾':'☀';$('#themeText').textContent=theme==='dark'?'深色':'浅色';document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#101b1c':'#f6f0e5'}
+
+    renderMapControls();renderDays();renderMap();renderInfo();tick();clocks();setInterval(()=>{tick();clocks()},1000);
+    setTheme(localStorage.getItem('thaiTripTheme')||((matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'));
+    document.addEventListener('click',e=>{
+      const head=e.target.closest('.day-header');if(head){const day=head.closest('.day');day.classList.toggle('open');head.setAttribute('aria-expanded',day.classList.contains('open'));return}
+      const check=e.target.closest('[data-check]');if(check){const id=check.dataset.check;state.checks[id]=!state.checks[id];localStorage.setItem('thaiTripChecks',JSON.stringify(state.checks));const ev=check.closest('.event');ev.classList.toggle('done',state.checks[id]);check.classList.toggle('checked',state.checks[id]);check.textContent=state.checks[id]?'✓ 已去过':'○ 打卡';const di=days.findIndex(d=>d.items.some(i=>i[0]===id));updateProgress(di);toast();return}
+      const pl=e.target.closest('[data-place]');if(pl){showPlace(pl.dataset.place);return}
+      const mp=e.target.closest('[data-map-place]');if(mp){showPlace(mp.dataset.mapPlace);return}
+      const mf=e.target.closest('[data-map-filter]');if(mf){state.mapDay=Number(mf.dataset.mapFilter);state.showAll=false;renderMap();return}
+      const md=e.target.closest('[data-map-day]');if(md){state.mapDay=Number(md.dataset.mapDay);state.showAll=false;renderMap();$('#mapSection').scrollIntoView({behavior:'smooth'});return}
+      if(e.target.id==='showAllBtn'){state.showAll=!state.showAll;if(state.showAll)state.mapDay=null;renderMap();return}
+      if(e.target.id==='themeToggle'||e.target.closest('#themeToggle')){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');return}
+      if(e.target.id==='modalClose'||e.target.id==='placeModal')closeModal();
+    });
+    document.addEventListener('change',e=>{if(e.target.matches('[data-todo]')){const i=e.target.dataset.todo;state.todos[i]=e.target.checked;localStorage.setItem('thaiTripTodos',JSON.stringify(state.todos));e.target.closest('.todo').classList.toggle('done',e.target.checked);toast()}});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();const mp=e.target.closest&&e.target.closest('[data-map-place]');if(mp&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showPlace(mp.dataset.mapPlace)}});
+  })();
+  </script>
+</body>
+</html>
