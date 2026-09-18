@@ -49,10 +49,16 @@
     .sketch{stroke:var(--ink);stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
     .sky{fill:var(--sky)} .sky-glow{fill:var(--sky2)} .mount{fill:var(--mount)} .plant{fill:var(--plant)} .building{fill:var(--building)} .water{fill:var(--blue);opacity:.68}
     .sun{fill:var(--gold)} .moon-star{opacity:0} html[data-theme="dark"] .sun{opacity:0} html[data-theme="dark"] .moon-star{opacity:1;fill:var(--gold)}
+    .status-strip{display:flex;gap:8px;overflow-x:auto;margin:14px 0 0;padding:2px 2px 5px;scrollbar-width:none}.status-strip::-webkit-scrollbar{display:none}
+    .status-chip{flex:0 0 auto;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:12px;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.03)}
+    .status-chip.ok{background:var(--green-2);color:var(--green);border-color:color-mix(in srgb,var(--green) 35%,var(--line))}.status-chip.wait{background:var(--gold-2);color:var(--ink)}
     .dashboard{display:grid;grid-template-columns:1.35fr .65fr;gap:14px;margin:16px 0}
     .panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:20px}
     .panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
     .panel-title h2,.panel-title h3{margin:0;font-size:18px;letter-spacing:-.02em}
+    .now-panel{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;background:linear-gradient(135deg,var(--card),color-mix(in srgb,var(--green-2) 56%,var(--card)))}
+    .now-kicker{font-size:11px;font-weight:900;letter-spacing:.13em;color:var(--coral);text-transform:uppercase}.now-title{margin:3px 0 2px;font-size:21px;line-height:1.35;font-weight:900}.now-meta,.now-task{font-size:12px;color:var(--muted)}
+    .now-side{text-align:right}.now-count{font-size:18px;font-weight:900;color:var(--green);white-space:nowrap}.now-task{margin-top:5px;max-width:360px}.now-task strong{color:var(--ink)}
     .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
     .count-box{border-radius:16px;background:var(--green-2);padding:13px 6px;text-align:center}
     .count-num{display:block;font-size:clamp(22px,6vw,34px);font-weight:850;line-height:1.15;font-variant-numeric:tabular-nums}
@@ -105,6 +111,7 @@
     .check-btn{padding:5px 9px;font-size:11px;font-weight:800;margin-left:auto}.check-btn.checked{background:var(--green);color:#fff;border-color:var(--green)}
     .mini-map{margin-top:15px;padding:11px;border:1px dashed var(--line);border-radius:14px;background:var(--paper-2)}
     .mini-map svg{display:block;width:100%;height:66px}.mini-map text{fill:var(--muted);font-size:8px;font-weight:700}
+    .real-map{margin-top:12px;border:1px solid var(--line);border-radius:15px;background:var(--paper-2);overflow:hidden}.real-map-bar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:10px 11px}.route-toggle{border:0;border-radius:999px;background:var(--green);color:#fff;padding:7px 11px;font-size:12px;font-weight:850;cursor:pointer}.route-note{font-size:11px;color:var(--muted);flex:1}.route-nav{font-size:12px;font-weight:850;text-decoration:none;white-space:nowrap}.route-frame{border-top:1px solid var(--line);padding:10px}.route-frame[hidden]{display:none}.route-frame iframe{display:block;width:100%;height:310px;border:0;border-radius:11px;background:var(--green-2)}.route-frame p{margin:7px 2px 0;color:var(--muted);font-size:11px}
     .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
     .info-card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
     .info-card h3{margin:0 0 9px;font-size:16px}.info-card p{margin:5px 0;color:var(--muted);font-size:13px}.info-card strong{color:var(--ink)}
@@ -123,9 +130,10 @@
     .toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper-2);padding:9px 14px;border-radius:999px;font-size:12px;font-weight:750;transition:.25s;z-index:80}.toast.show{opacity:1;transform:translate(-50%,0)}
     @media(max-width:700px){
       .app{padding:10px 12px 45px}.dashboard{grid-template-columns:1fr}.hero-copy{padding:23px 19px 8px}.hero-art{min-height:220px}
+      .now-panel{grid-template-columns:1fr}.now-side{text-align:left}.now-task{max-width:none}.status-strip{margin-top:10px}
       .panel{padding:16px}.section-head{align-items:flex-start}.section-head h2{font-size:22px}.info-grid,.tips{grid-template-columns:1fr}
       #tripMap{min-height:280px}.day-header{padding:14px 13px}.day-body{padding:14px 10px}.day-no{flex-basis:41px;height:41px}.event{gap:9px}.event-card{padding:12px}.event-top{display:block}.check-btn{margin:10px 0 0}.timeline:before{left:14px}
-      .map-label{font-size:10px}.map-city{font-size:16px}
+      .map-label{font-size:10px}.map-city{font-size:16px}.route-frame iframe{height:260px}.route-note{flex-basis:100%;order:3}
     }
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
     @media print{.topbar,.map-controls,.check-btn,.day-tools,.modal,.toast{display:none!important}.app{width:100%;padding:0}.day-body{display:block!important}.day{break-inside:avoid;box-shadow:none}.hero,.panel,.info-card,.tip{box-shadow:none}}
@@ -170,7 +178,20 @@
       </svg>
     </header>
 
+    <div class="status-strip" aria-label="预订状态">
+      <span class="status-chip ok">✈️ 航班 4/4 已确认</span>
+      <span class="status-chip ok">🏨 酒店 3/3 已确认</span>
+      <span class="status-chip wait">🎯 700周年射击场 · 待预约</span>
+      <span class="status-chip wait">🍽 Ekachan · 待预约</span>
+      <span class="status-chip wait">🌲 Jungle Flight · 待确认</span>
+      <span class="status-chip wait">🥊 Dang Muay Thai · 待预约</span>
+    </div>
+
     <section class="dashboard" aria-label="出发信息">
+      <div class="panel now-panel" aria-live="polite">
+        <div><div class="now-kicker" id="nowKicker">此刻关注</div><div class="now-title" id="nowTitle">正在读取下一项行程…</div><div class="now-meta" id="nowMeta"></div></div>
+        <div class="now-side"><div class="now-count" id="nowCountdown"></div><div class="now-task" id="nowTask"></div></div>
+      </div>
       <div class="panel">
         <div class="panel-title"><h2>距离出发</h2><span class="eyebrow">NX996</span></div>
         <div class="countdown" id="countdown"><div class="count-box"><span class="count-num" data-u="d">--</span><span class="count-label">天</span></div><div class="count-box"><span class="count-num" data-u="h">--</span><span class="count-label">时</span></div><div class="count-box"><span class="count-num" data-u="m">--</span><span class="count-label">分</span></div><div class="count-box"><span class="count-num" data-u="s">--</span><span class="count-label">秒</span></div></div>
@@ -452,7 +473,7 @@
           const [id,time,title,note,tags,pk,travel]=it,checked=!!state.checks[id];
           return `<div class="event-wrap">${travel?`<div class="travel-pill">↳ ${esc(travel)}</div>`:''}<article class="event ${checked?'done':''}" data-event="${id}"><div class="event-dot"></div><div class="event-card"><div class="event-top"><div class="event-main"><div class="event-time">${esc(time)} <span class="tz">${TZ}</span></div><div class="event-title">${pk?`<button class="place-link" data-place="${pk}" type="button">${esc(title)} ⓘ</button>`:esc(title)}</div><p class="event-note">${esc(note)}</p><div class="event-actions">${tags.map(t=>`<span class="tag ${tagClass(t)}">${esc(t)}</span>`).join('')}<button class="check-btn ${checked?'checked':''}" data-check="${id}" type="button">${checked?'✓ 已去过':'○ 打卡'}</button></div></div></div></div></article></div>`;
         }).join('');
-        return `<article class="day ${di===0?'open':''}" data-day="${di}"><button class="day-header" type="button" aria-expanded="${di===0}"><span class="day-no">D${di+1}</span><span class="day-title"><strong>${esc(day.date)} · ${esc(day.title)}</strong><span>${esc(day.summary)}</span></span><span class="day-progress"><strong>${done}/${total}</strong>完成</span><span class="chev">⌄</span></button><div class="day-body"><div class="day-tools"><span class="route-summary">${esc(day.summary)}</span><button class="ghost-btn" data-map-day="${di}" type="button">查看当天地图</button></div><div class="timeline">${events}</div>${miniMap(di)}</div></article>`;
+        return `<article class="day ${di===0?'open':''}" data-day="${di}"><button class="day-header" type="button" aria-expanded="${di===0}"><span class="day-no">D${di+1}</span><span class="day-title"><strong>${esc(day.date)} · ${esc(day.title)}</strong><span>${esc(day.summary)}</span></span><span class="day-progress"><strong>${done}/${total}</strong>完成</span><span class="chev">⌄</span></button><div class="day-body"><div class="day-tools"><span class="route-summary">${esc(day.summary)}</span><button class="ghost-btn" data-map-day="${di}" type="button">查看当天示意图</button></div><div class="timeline">${events}</div>${miniMap(di)}${realRouteMap(di)}</div></article>`;
       }).join('');
     }
     function miniMap(di){
@@ -460,6 +481,14 @@
       if(!keys.length)return'';const w=720,pad=24,step=keys.length>1?(w-pad*2)/(keys.length-1):0;
       const circles=keys.map((k,i)=>{const x=pad+i*step,p=places[k];return `<circle cx="${x}" cy="25" r="5" fill="var(--card-solid)" stroke="var(--green)" stroke-width="3"/><text x="${x}" y="49" text-anchor="middle">${esc(p.name.slice(0,6))}</text>`}).join('');
       return `<div class="mini-map"><svg viewBox="0 0 ${w} 62" aria-label="当天路线小地图"><path d="M${pad} 25H${w-pad}" stroke="var(--coral)" stroke-width="3" stroke-dasharray="7 6" fill="none"/>${circles}</svg></div>`;
+    }
+    function dayPlaceKeys(di){return days[di].items.map(i=>i[5]).filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i)}
+    function realRouteMap(di){
+      const keys=dayPlaceKeys(di),queries=keys.map(k=>places[k].query);if(queries.length<2)return'';
+      const origin=queries[0],destination=queries.at(-1),middle=queries.slice(1,-1);
+      const embed=`https://maps.google.com/maps?saddr=${encodeURIComponent(origin)}&daddr=${queries.slice(1).map(encodeURIComponent).join('%20to%3A')}&output=embed`;
+      const nav=`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&travelmode=driving${middle.length?`&waypoints=${middle.map(encodeURIComponent).join('%7C')}`:''}`;
+      return `<div class="real-map"><div class="real-map-bar"><button class="route-toggle" type="button" data-route-toggle="${di}" data-src="${esc(embed)}">🗺️ 展开当天真实路线地图</button><span class="route-note">${queries.length}个地点 · 含步行或船程的日期请以行程说明为准</span><a class="route-nav" href="${esc(nav)}" target="_blank" rel="noopener">Google完整导航 ↗</a></div><div class="route-frame" hidden><iframe title="D${di+1}当天真实路线地图" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><p>真实地图需要联网加载；断网时仍可正常查看上方行程与示意路线。</p></div></div>`;
     }
     function updateProgress(di){const d=days[di],done=d.items.filter(i=>state.checks[i[0]]).length;document.querySelector(`[data-day="${di}"] .day-progress strong`).textContent=`${done}/${d.items.length}`}
 
@@ -490,11 +519,24 @@
       $('#hotels').innerHTML=hotels.map(h=>`<article class="info-card"><h3>${esc(h.name)}</h3><p><strong>${esc(h.date)}</strong></p><p>${esc(h.check)}</p><p>${esc(h.note)}</p></article>`).join('');
       $('#todos').innerHTML=todoItems.map((t,i)=>`<label class="todo ${state.todos[i]?'done':''}"><input type="checkbox" data-todo="${i}" ${state.todos[i]?'checked':''}><span>${esc(t)}</span></label>`).join('');
     }
+    function tripSchedule(){
+      const pad=n=>String(n).padStart(2,'0');
+      return days.flatMap((day,di)=>day.items.map(it=>{const dm=day.date.match(/(\d{2})\.(\d{2})/),tm=it[1].match(/(\d{2}):(\d{2})/);if(!dm||!tm)return null;const zone=it[0]==='d1-1'?'+08:00':'+07:00';return{day,di,it,when:new Date(`2026-${pad(dm[1])}-${pad(dm[2])}T${tm[1]}:${tm[2]}:00${zone}`).getTime()}})).filter(Boolean).sort((a,b)=>a.when-b.when);
+    }
+    const schedule=tripSchedule();
+    function shortRemaining(ms){const d=Math.floor(ms/86400000),h=Math.floor(ms%86400000/3600000),m=Math.max(0,Math.floor(ms%3600000/60000));return d>0?`${d}天 ${h}小时`:h>0?`${h}小时 ${m}分钟`:`${m}分钟`}
+    function updateNow(){
+      const now=Date.now(),first=schedule[0],next=schedule.find(e=>e.when>now),lastEnd=new Date('2026-10-08T23:59:00+07:00').getTime();
+      if(now<first.when){$('#nowKicker').textContent='出发前 · 第一站';$('#nowTitle').textContent=first.it[2];$('#nowMeta').textContent=`${first.day.date} · ${first.it[1]} · 从澳门出发`;$('#nowCountdown').textContent=`还有 ${shortRemaining(first.when-now)}`}
+      else if(next&&now<=lastEnd){$('#nowKicker').textContent=`此刻关注 · D${next.di+1}下一项`;$('#nowTitle').textContent=next.it[2];$('#nowMeta').textContent=`${next.day.date} · ${next.it[1]} · 泰国当地时间`;$('#nowCountdown').textContent=`还有 ${shortRemaining(next.when-now)}`}
+      else{$('#nowKicker').textContent='旅程完成';$('#nowTitle').textContent='曼谷·清迈9天慢旅行已结束';$('#nowMeta').textContent='打开逐日行程，随时回看这次旅程。';$('#nowCountdown').textContent='期待下一次出发'}
+      const pending=todoItems.findIndex((_,i)=>!state.todos[i]);$('#nowTask').innerHTML=pending<0?'<strong>当前待办：</strong>已全部完成 ✓':`<strong>当前待办：</strong>${esc(todoItems[pending])}`;
+    }
     function tick(){const target=new Date('2026-09-30T07:45:00+08:00').getTime(),diff=target-Date.now();if(diff<=0){$('[data-u="d"]').textContent='已';$('[data-u="h"]').textContent='经';$('[data-u="m"]').textContent='出';$('[data-u="s"]').textContent='发';return}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);$('[data-u="d"]').textContent=d;$('[data-u="h"]').textContent=String(h).padStart(2,'0');$('[data-u="m"]').textContent=String(m).padStart(2,'0');$('[data-u="s"]').textContent=String(s).padStart(2,'0')}
     function clocks(){const now=new Date(),fmt=z=>new Intl.DateTimeFormat('zh-CN',{timeZone:z,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);$('#cnClock').textContent=fmt('Asia/Shanghai');$('#thClock').textContent=fmt('Asia/Bangkok')}
     function setTheme(theme){document.documentElement.dataset.theme=theme;localStorage.setItem('thaiTripTheme',theme);$('#themeIcon').textContent=theme==='dark'?'☾':'☀';$('#themeText').textContent=theme==='dark'?'深色':'浅色';document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#101b1c':'#f6f0e5'}
 
-    renderMapControls();renderDays();renderMap();renderInfo();tick();clocks();setInterval(()=>{tick();clocks()},1000);
+    renderMapControls();renderDays();renderMap();renderInfo();tick();clocks();updateNow();setInterval(()=>{tick();clocks();updateNow()},1000);
     setTheme(localStorage.getItem('thaiTripTheme')||((matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light'));
     document.addEventListener('click',e=>{
       const head=e.target.closest('.day-header');if(head){const day=head.closest('.day');day.classList.toggle('open');head.setAttribute('aria-expanded',day.classList.contains('open'));return}
@@ -503,11 +545,12 @@
       const mp=e.target.closest('[data-map-place]');if(mp){showPlace(mp.dataset.mapPlace);return}
       const mf=e.target.closest('[data-map-filter]');if(mf){state.mapDay=Number(mf.dataset.mapFilter);state.showAll=false;renderMap();return}
       const md=e.target.closest('[data-map-day]');if(md){state.mapDay=Number(md.dataset.mapDay);state.showAll=false;renderMap();$('#mapSection').scrollIntoView({behavior:'smooth'});return}
+      const rt=e.target.closest('[data-route-toggle]');if(rt){const box=rt.closest('.real-map'),frame=box.querySelector('.route-frame'),iframe=frame.querySelector('iframe'),opening=frame.hidden;if(opening&&!iframe.getAttribute('src'))iframe.src=rt.dataset.src;frame.hidden=!opening;rt.textContent=opening?'🗺️ 收起当天真实路线地图':'🗺️ 展开当天真实路线地图';return}
       if(e.target.id==='showAllBtn'){state.showAll=!state.showAll;if(state.showAll)state.mapDay=null;renderMap();return}
       if(e.target.id==='themeToggle'||e.target.closest('#themeToggle')){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');return}
       if(e.target.id==='modalClose'||e.target.id==='placeModal')closeModal();
     });
-    document.addEventListener('change',e=>{if(e.target.matches('[data-todo]')){const i=e.target.dataset.todo;state.todos[i]=e.target.checked;localStorage.setItem('thaiTripTodos',JSON.stringify(state.todos));e.target.closest('.todo').classList.toggle('done',e.target.checked);toast()}});
+    document.addEventListener('change',e=>{if(e.target.matches('[data-todo]')){const i=e.target.dataset.todo;state.todos[i]=e.target.checked;localStorage.setItem('thaiTripTodos',JSON.stringify(state.todos));e.target.closest('.todo').classList.toggle('done',e.target.checked);updateNow();toast()}});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();const mp=e.target.closest&&e.target.closest('[data-map-place]');if(mp&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showPlace(mp.dataset.mapPlace)}});
   })();
   </script>
