@@ -118,7 +118,14 @@
     .ticket-code{display:inline-block;padding:4px 8px;border-radius:8px;background:var(--gold-2);font-weight:900;letter-spacing:.08em;color:var(--ink)}
     .todo-list{display:grid;gap:8px}
     .todo{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:11px 12px;border-radius:13px;background:var(--card-solid);cursor:pointer}
-    .todo input{width:18px;height:18px;accent-color:var(--green);margin-top:3px}.todo.done span{text-decoration:line-through;color:var(--muted)}
+    .todo input{width:18px;height:18px;accent-color:var(--green);margin-top:3px;flex:0 0 auto}.todo-copy{display:grid;gap:3px}.todo-deadline{font-size:11px;font-weight:900;color:var(--coral);font-variant-numeric:tabular-nums}.todo-text{font-size:13px}.todo.done .todo-text{text-decoration:line-through;color:var(--muted)}.todo.done .todo-deadline{color:var(--muted)}
+    .entry-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
+    .guide-card{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:17px;box-shadow:var(--shadow)}
+    .guide-card h3{margin:0 0 10px;font-size:17px}.guide-card>p{margin:0 0 11px;color:var(--muted);font-size:13px}
+    .guide-steps{counter-reset:entry;display:grid;gap:9px;margin:0;padding:0;list-style:none}.guide-steps li{position:relative;padding:11px 12px 11px 45px;border:1px solid var(--line);border-radius:13px;background:var(--card-solid);font-size:13px}.guide-steps li:before{counter-increment:entry;content:counter(entry);position:absolute;left:11px;top:10px;width:24px;height:24px;border-radius:9px;display:grid;place-items:center;background:var(--green);color:#fff;font-size:11px;font-weight:900}.guide-steps strong{display:block;margin-bottom:2px}
+    .entry-facts{display:grid;gap:8px}.entry-fact{padding:10px 12px;border-radius:13px;background:var(--paper-2);border:1px solid var(--line)}.entry-fact span{display:block;font-size:10px;font-weight:900;color:var(--coral);letter-spacing:.08em}.entry-fact strong{display:block;font-size:13px;margin-top:2px}
+    .entry-note{margin-top:10px;padding:11px 12px;border-radius:13px;background:var(--gold-2);font-size:12px}
+    .emergency-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.emergency-link{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:var(--card-solid);color:var(--ink);text-decoration:none;font-size:12px}.emergency-link strong{color:var(--green);white-space:nowrap}
     .tips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .tip{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:15px}.tip-icon{font-size:23px}.tip h3{margin:5px 0 3px;font-size:14px}.tip p{font-size:12px;color:var(--muted);margin:0}
     footer{text-align:center;color:var(--muted);font-size:12px;padding:34px 10px 0}
@@ -131,7 +138,7 @@
     @media(max-width:700px){
       .app{padding:10px 12px 45px}.dashboard{grid-template-columns:1fr}.hero-copy{padding:23px 19px 8px}.hero-art{min-height:220px}
       .now-panel{grid-template-columns:1fr}.now-side{text-align:left}.now-task{max-width:none}.status-strip{margin-top:10px}
-      .panel{padding:16px}.section-head{align-items:flex-start}.section-head h2{font-size:22px}.info-grid,.tips{grid-template-columns:1fr}
+      .panel{padding:16px}.section-head{align-items:flex-start}.section-head h2{font-size:22px}.info-grid,.tips,.entry-layout{grid-template-columns:1fr}.emergency-grid{grid-template-columns:1fr}
       #tripMap{min-height:280px}.day-header{padding:14px 13px}.day-body{padding:14px 10px}.day-no{flex-basis:41px;height:41px}.event{gap:9px}.event-card{padding:12px}.event-top{display:block}.check-btn{margin:10px 0 0}.timeline:before{left:14px}
       .map-label{font-size:10px}.map-city{font-size:16px}.route-frame iframe{height:260px}.route-note{flex-basis:100%;order:3}
     }
@@ -229,6 +236,48 @@
     <section class="section">
       <div class="section-head"><div><h2>出发前待办</h2><p>勾选状态自动保存</p></div></div>
       <div class="panel todo-list" id="todos"></div>
+    </section>
+
+    <section class="section" id="entryGuide">
+      <div class="section-head"><div><h2>泰国入境过关攻略</h2><p>9月30日抵达素万那普机场 · 按这个顺序走即可</p></div></div>
+      <div class="entry-layout">
+        <article class="guide-card">
+          <h3>从下飞机到进入曼谷</h3>
+          <ol class="guide-steps">
+            <li><strong>下飞机后跟随“Arrivals / Immigration”标识</strong>先不要前往转机通道，准备好护照和TDAC二维码。</li>
+            <li><strong>进入外国护照入境队列</strong>排队时打开TDAC确认页，把手机亮度调高；网络不稳定时直接使用提前保存的截图或PDF。</li>
+            <li><strong>在入境柜台提交护照</strong>按现场提示拍照或采集指纹。被询问时如实简短回答：旅游、停留9天、曼谷与清迈、10月8日离境。</li>
+            <li><strong>需要时出示辅助材料</strong>包括第一家酒店订单、JD420返程机票、后续住宿和行程单；材料提前保存在手机本地。</li>
+            <li><strong>通过入境后领取托运行李</strong>先查看屏幕确认NX996对应转盘，取到行李后检查是否破损或遗漏。</li>
+            <li><strong>通过海关通道</strong>无申报物品走绿色通道；有需申报物品走红色通道。不要携带电子烟、烟弹及相关设备入境。</li>
+            <li><strong>出海关后再处理网络和交通</strong>激活流量卡，前往机场地下层乘机场快线至Makkasan，换乘MRT蓝线至Phra Ram 9，再步行前往酒店。</li>
+          </ol>
+        </article>
+        <div>
+          <article class="guide-card">
+            <h3>TDAC填写速查</h3>
+            <div class="entry-facts">
+              <div class="entry-fact"><span>抵达日期</span><strong>2026年9月30日</strong></div>
+              <div class="entry-fact"><span>入境航班</span><strong>NX996｜澳门 MFM → 曼谷 BKK</strong></div>
+              <div class="entry-fact"><span>泰国首晚住宿</span><strong>Bangkok City Rama 9 Hotel</strong></div>
+              <div class="entry-fact"><span>离境信息</span><strong>2026年10月8日｜JD420｜曼谷 BKK → 杭州 HGH</strong></div>
+              <div class="entry-fact"><span>旅行目的</span><strong>旅游 / Tourism</strong></div>
+            </div>
+            <div class="entry-note">TDAC只在泰国移民局官网免费填写：<a href="https://tdac.immigration.go.th" target="_blank" rel="noopener">tdac.immigration.go.th ↗</a>。提交后同时保存二维码截图、确认邮件和PDF。</div>
+          </article>
+          <article class="guide-card" style="margin-top:12px">
+            <h3>紧急电话</h3>
+            <p>出发前保存到通讯录；点击号码可直接拨打。</p>
+            <div class="emergency-grid">
+              <a class="emergency-link" href="tel:191"><span>泰国报警</span><strong>191</strong></a>
+              <a class="emergency-link" href="tel:1155"><span>旅游警察 · 中文</span><strong>1155</strong></a>
+              <a class="emergency-link" href="tel:+6622457010"><span>中国驻泰使馆领保</span><strong>+66 2 245 7010</strong></a>
+              <a class="emergency-link" href="tel:+6653280618"><span>驻清迈总领馆领保</span><strong>+66 53 280 618</strong></a>
+              <a class="emergency-link" href="tel:+861012308"><span>外交部领保热线</span><strong>+86 10 12308</strong></a>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section class="section">
@@ -337,7 +386,7 @@
       {date:'10.02 周五',title:'曼谷 → 清迈｜古城与大学夜市',summary:'SL508 · Slowly · 艺术村 · 大学后门夜市',items:[
         ['d3-1','07:00—07:40','起床、整理、退房','检查证件和托运行李额。',['准备'],null,''],
         ['d3-2','08:00—09:00','前往廊曼机场','使用Grab或出租车。',['交通'],'dmk','约40—60分钟'],
-        ['d3-3','11:05—12:20','SL508｜曼谷 → 清迈','提前在泰国狮航官网购买托运行李额；手提行李约7公斤，以订单为准。',['航班','注意'],'cnx',''],
+        ['d3-3','11:05—12:20','SL508｜曼谷 → 清迈','10月1日11:05开放线上值机，开放后立即在泰国狮航官网购买托运行李额并完成值机；手提行李约7公斤，以订单为准。',['航班','注意'],'cnx',''],
         ['d3-4','12:20—13:15','取行李，前往MOMO Hotel','使用Grab、出租车或红色双条车。',['交通'],'momo','约20—30分钟'],
         ['d3-5','13:15','酒店寄存行李','MOMO Hotel于14:00后办理入住。',['住宿'],'momo',''],
         ['d3-6','13:30—14:50','พิถี Slowly午餐','พิถี / Slowly / Slowly泰式粉面店\n主打：牛肉汤粉、冬阴功粉面；特点：上菜较慢，用餐及等待预留约1小时。',['美食','注意'],'slowly','约5分钟'],
@@ -404,7 +453,7 @@
         ['d7-4','10:30—11:50','返回酒店、洗澡、整理','回MOMO Hotel完成退房准备。',['准备'],'momo','约15分钟'],
         ['d7-5','12:00—13:00','退房、寄存行李、午餐','完成退房并简单用餐。',['住宿'],'momo',''],
         ['d7-6','13:00—14:00','取行李，前往清迈机场','使用Grab或出租车。',['交通'],'cnx','约30—40分钟'],
-        ['d7-7','16:30—17:40','FD3440｜清迈 → 曼谷','提前在亚洲航空App或官网购买托运行李额；手提2件合计不超过7公斤。',['航班','注意'],'dmk',''],
+        ['d7-7','16:30—17:40','FD3440｜清迈 → 曼谷','9月26日16:30开放线上值机，开放后立即在AirAsia MOVE购买托运行李额并完成值机；手提2件合计不超过7公斤。',['航班','注意'],'dmk',''],
         ['d7-8','17:40—19:40','取行李，前往MO酒店','建议直接使用Grab或出租车，按晚高峰预留。',['交通'],'mo','约50—80分钟'],
         ['d7-9','19:40—20:00','办理入住、放下行李','MO酒店拉差贴威。',['住宿'],'mo',''],
         ['d7-10','20:00—20:25','前往CentralWorld','优先步行或乘BTS，避免晚高峰短途堵车。',['交通'],'central','约15—25分钟'],
@@ -438,8 +487,8 @@
 
     const tickets=[
       {code:'NX996',route:'澳门 MFM → 曼谷 BKK',time:'09月30日 07:45—09:35',note:'飞行2小时50分钟｜订单号：待补充'},
-      {code:'SL508',route:'曼谷 DMK → 清迈 CNX',time:'10月02日 11:05—12:20',note:'提前官网购买托运行李额｜订单号：待补充'},
-      {code:'FD3440',route:'清迈 CNX → 曼谷 DMK',time:'10月06日 16:30—17:40',note:'提前亚航App/官网购买托运行李额｜订单号：待补充'},
+      {code:'SL508',route:'曼谷 DMK → 清迈 CNX',time:'10月02日 11:05—12:20',note:'10月1日11:05开放线上值机，开放即购买行李额并办理值机｜订单号：待补充'},
+      {code:'FD3440',route:'清迈 CNX → 曼谷 DMK',time:'10月06日 16:30—17:40',note:'9月26日16:30开放线上值机，开放即购买行李额并办理值机｜订单号：待补充'},
       {code:'JD420',route:'曼谷 BKK → 杭州 HGH',time:'10月08日 12:50起飞',note:'按舱位确认托运行李额｜订单号：待补充'}
     ];
     const hotels=[
@@ -448,20 +497,25 @@
       {name:'MO酒店拉差贴威',date:'10月06日—10月08日 · 曼谷',check:'14:00后入住',note:'包含早餐｜订单号：待补充'}
     ];
     const todoItems=[
-      '在泰国狮航官网购买SL508托运行李额',
-      '在亚洲航空App或官网购买FD3440托运行李额',
-      '预约10月3日18:00的Ekachan',
-      '10月3日08:50前抵达女子监狱按摩现场排号',
-      '预约10月3日13:00的700周年体育场射击场，确认两人套餐、可用枪型和证件要求，并携带护照',
-      '确认Jungle Flight套餐与09:00接送地点',
-      '预约10月6日09:00的Dang Muay Thai私教',
-      '出发前核对10月1日蓝旗船时刻',
-      '确认JD420舱位及托运行李额',
-      '补充全部航班与酒店订单号'
+      {id:'sim',deadline:'9月23日前 · 提前7天',text:'购买泰国流量卡或eSIM，保存安装与激活说明'},
+      {id:'apps',deadline:'9月23日前 · 提前7天',text:'下载并登录Grab、Google Maps、AirAsia MOVE、航空公司及参观排队所需App'},
+      {id:'shooting700',deadline:'9月26日13:00前 · 提前7天',text:'预约10月3日13:00的700周年体育场射击场，确认两人套餐、枪型、证件与护照要求'},
+      {id:'fd3440',deadline:'9月26日16:30 · 开放即办',text:'在AirAsia MOVE为FD3440购买托运行李额，并立即完成线上值机'},
+      {id:'ekachan',deadline:'9月26日18:00前 · 提前7天',text:'预约10月3日18:00的Ekachan并保存确认信息'},
+      {id:'tdac',deadline:'9月27日 · 提前3天',text:'填写泰国数字入境卡TDAC，下载并离线保存二维码、确认邮件和PDF'},
+      {id:'entryDocs',deadline:'9月27日 · 提前3天',text:'整理并离线保存JD420返程机票、三家酒店订单及完整行程证明'},
+      {id:'insurance',deadline:'9月27日 · 提前3天',text:'购买或核对境外旅行保险，确认Jungle Flight、泰拳与射击项目是否承保'},
+      {id:'emergency',deadline:'9月27日前',text:'保存泰国报警、旅游警察、中国驻泰使馆及驻清迈总领馆紧急电话'},
+      {id:'jungle',deadline:'9月28日09:00前 · 提前7天',text:'确认Jungle Flight套餐、保险、MOMO Hotel接送范围及准确接人时间'},
+      {id:'dang',deadline:'9月29日09:00前 · 提前7天',text:'预约10月6日09:00的Dang Muay Thai私教，确认时长、人数与装备'},
+      {id:'sabaidee',deadline:'9月29日16:30前 · 提前1天',text:'预约9月30日16:30的Sabaidee Massage'},
+      {id:'attractions',deadline:'9月30日晚上',text:'核对10月1日大皇宫、玉佛寺、郑王庙开放情况及蓝旗船班次和码头公告'},
+      {id:'sl508',deadline:'10月1日11:05 · 开放即办',text:'在泰国狮航官网为SL508购买托运行李额，并立即完成线上值机'},
+      {id:'prisonReminder',deadline:'10月2日晚上',text:'设置女子监狱按摩提醒：10月3日08:45与朋友会合，08:50前到现场排号'}
     ];
 
     const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-    const state={checks:JSON.parse(localStorage.getItem('thaiTripChecks')||'{}'),todos:JSON.parse(localStorage.getItem('thaiTripTodos')||'{}'),mapDay:null,showAll:false};
+    const state={checks:JSON.parse(localStorage.getItem('thaiTripChecks')||'{}'),todos:JSON.parse(localStorage.getItem('thaiTripTodosV2')||'{}'),mapDay:null,showAll:false};
     const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     const tagClass=t=>t==='注意'||t==='预约'?'warn':t==='航班'?'flight':'';
     function toast(msg='已保存'){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1400)}
@@ -517,7 +571,7 @@
     function renderInfo(){
       $('#tickets').innerHTML=tickets.map(t=>`<article class="info-card"><h3><span class="ticket-code">${esc(t.code)}</span></h3><p><strong>${esc(t.route)}</strong></p><p>${esc(t.time)}</p><p>${esc(t.note)}</p></article>`).join('');
       $('#hotels').innerHTML=hotels.map(h=>`<article class="info-card"><h3>${esc(h.name)}</h3><p><strong>${esc(h.date)}</strong></p><p>${esc(h.check)}</p><p>${esc(h.note)}</p></article>`).join('');
-      $('#todos').innerHTML=todoItems.map((t,i)=>`<label class="todo ${state.todos[i]?'done':''}"><input type="checkbox" data-todo="${i}" ${state.todos[i]?'checked':''}><span>${esc(t)}</span></label>`).join('');
+      $('#todos').innerHTML=todoItems.map(t=>`<label class="todo ${state.todos[t.id]?'done':''}"><input type="checkbox" data-todo="${esc(t.id)}" ${state.todos[t.id]?'checked':''}><span class="todo-copy"><span class="todo-deadline">${esc(t.deadline)}</span><span class="todo-text">${esc(t.text)}</span></span></label>`).join('');
     }
     function tripSchedule(){
       const pad=n=>String(n).padStart(2,'0');
@@ -530,7 +584,7 @@
       if(now<first.when){$('#nowKicker').textContent='出发前 · 第一站';$('#nowTitle').textContent=first.it[2];$('#nowMeta').textContent=`${first.day.date} · ${first.it[1]} · 从澳门出发`;$('#nowCountdown').textContent=`还有 ${shortRemaining(first.when-now)}`}
       else if(next&&now<=lastEnd){$('#nowKicker').textContent=`此刻关注 · D${next.di+1}下一项`;$('#nowTitle').textContent=next.it[2];$('#nowMeta').textContent=`${next.day.date} · ${next.it[1]} · 泰国当地时间`;$('#nowCountdown').textContent=`还有 ${shortRemaining(next.when-now)}`}
       else{$('#nowKicker').textContent='旅程完成';$('#nowTitle').textContent='曼谷·清迈9天慢旅行已结束';$('#nowMeta').textContent='打开逐日行程，随时回看这次旅程。';$('#nowCountdown').textContent='期待下一次出发'}
-      const pending=todoItems.findIndex((_,i)=>!state.todos[i]);$('#nowTask').innerHTML=pending<0?'<strong>当前待办：</strong>已全部完成 ✓':`<strong>当前待办：</strong>${esc(todoItems[pending])}`;
+      const pending=todoItems.find(t=>!state.todos[t.id]);$('#nowTask').innerHTML=!pending?'<strong>当前待办：</strong>已全部完成 ✓':`<strong>当前待办：</strong>${esc(pending.deadline)} · ${esc(pending.text)}`;
     }
     function tick(){const target=new Date('2026-09-30T07:45:00+08:00').getTime(),diff=target-Date.now();if(diff<=0){$('[data-u="d"]').textContent='已';$('[data-u="h"]').textContent='经';$('[data-u="m"]').textContent='出';$('[data-u="s"]').textContent='发';return}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);$('[data-u="d"]').textContent=d;$('[data-u="h"]').textContent=String(h).padStart(2,'0');$('[data-u="m"]').textContent=String(m).padStart(2,'0');$('[data-u="s"]').textContent=String(s).padStart(2,'0')}
     function clocks(){const now=new Date(),fmt=z=>new Intl.DateTimeFormat('zh-CN',{timeZone:z,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);$('#cnClock').textContent=fmt('Asia/Shanghai');$('#thClock').textContent=fmt('Asia/Bangkok')}
@@ -550,7 +604,7 @@
       if(e.target.id==='themeToggle'||e.target.closest('#themeToggle')){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');return}
       if(e.target.id==='modalClose'||e.target.id==='placeModal')closeModal();
     });
-    document.addEventListener('change',e=>{if(e.target.matches('[data-todo]')){const i=e.target.dataset.todo;state.todos[i]=e.target.checked;localStorage.setItem('thaiTripTodos',JSON.stringify(state.todos));e.target.closest('.todo').classList.toggle('done',e.target.checked);updateNow();toast()}});
+    document.addEventListener('change',e=>{if(e.target.matches('[data-todo]')){const id=e.target.dataset.todo;state.todos[id]=e.target.checked;localStorage.setItem('thaiTripTodosV2',JSON.stringify(state.todos));e.target.closest('.todo').classList.toggle('done',e.target.checked);updateNow();toast()}});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();const mp=e.target.closest&&e.target.closest('[data-map-place]');if(mp&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showPlace(mp.dataset.mapPlace)}});
   })();
   </script>
